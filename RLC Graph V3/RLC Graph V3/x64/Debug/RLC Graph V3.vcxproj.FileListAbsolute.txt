@@ -4,3 +4,6 @@ C:\Users\Alex\OneDrive\Desktop\repos\GroupProjectSemester2PartA\RLC Graph V3\RLC
 C:\Users\Alex\source\repos\GitPushTest\RLC Graph V3\RLC Graph V3\x64\Debug\RLC Graph V3.vcxproj.AssemblyReference.cache
 C:\Users\Alex\source\repos\GitPushTest\RLC Graph V3\RLC Graph V3\x64\Debug\RLC Graph V3.vcxproj.GenerateResource.cache
 C:\Users\Alex\source\repos\GitPushTest\RLC Graph V3\RLC Graph V3\x64\Debug\RLC_Graph_V3.Form1ANB.resources
+C:\Users\Ezrah\source\repos\FinalShrek\RLC Graph V3\RLC Graph V3\x64\Debug\RLC Graph V3.vcxproj.AssemblyReference.cache
+C:\Users\Ezrah\source\repos\FinalShrek\RLC Graph V3\RLC Graph V3\x64\Debug\RLC_Graph_V3.Form1ANB.resources
+C:\Users\Ezrah\source\repos\FinalShrek\RLC Graph V3\RLC Graph V3\x64\Debug\RLC Graph V3.vcxproj.GenerateResource.cache
