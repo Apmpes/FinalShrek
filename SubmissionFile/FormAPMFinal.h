@@ -19,12 +19,12 @@ namespace CppCLRWinFormsProject {
 	using namespace System::Drawing::Drawing2D;
 
 	/// <summary>
-	/// Summary for Form1
+	/// Summary for FormAPMFinal
 	/// </summary>
-	public ref class Form1 : public System::Windows::Forms::Form
+	public ref class FormAPMFinal : public System::Windows::Forms::Form
 	{
 	public:
-		Form1(void)
+		FormAPMFinal(void)
 		{
 			InitializeComponent();
 			//
@@ -55,26 +55,26 @@ namespace CppCLRWinFormsProject {
 			gameHeight = wallGamePanel1->Height;
 
 			/*
-			this->MouseClick += gcnew MouseEventHandler(this, &Form1::MClick); //to access mouse coords when click
-			this->MouseMove += gcnew MouseEventHandler(this, &Form1::OnMouseMove); //To access mouse cords at all times
-			this->MouseUp += gcnew MouseEventHandler(this, &Form1::Mup); //For dragging (when clicking)
-			this->MouseDown += gcnew MouseEventHandler(this, &Form1::Mdown); //For dragging (when releasing)
+			this->MouseClick += gcnew MouseEventHandler(this, &FormAPMFinal::MClick); //to access mouse coords when click
+			this->MouseMove += gcnew MouseEventHandler(this, &FormAPMFinal::OnMouseMove); //To access mouse cords at all times
+			this->MouseUp += gcnew MouseEventHandler(this, &FormAPMFinal::Mup); //For dragging (when clicking)
+			this->MouseDown += gcnew MouseEventHandler(this, &FormAPMFinal::Mdown); //For dragging (when releasing)
 			*/
-			wallGamePanel1->MouseClick += gcnew MouseEventHandler(this, &Form1::MClick);
-			wallGamePanel1->MouseDown += gcnew MouseEventHandler(this, &Form1::Mdown);
-			wallGamePanel1->MouseUp += gcnew MouseEventHandler(this, &Form1::Mup);
-			wallGamePanel1->MouseMove += gcnew MouseEventHandler(this, &Form1::OnMouseMove);
+			wallGamePanel1->MouseClick += gcnew MouseEventHandler(this, &FormAPMFinal::MClick);
+			wallGamePanel1->MouseDown += gcnew MouseEventHandler(this, &FormAPMFinal::Mdown);
+			wallGamePanel1->MouseUp += gcnew MouseEventHandler(this, &FormAPMFinal::Mup);
+			wallGamePanel1->MouseMove += gcnew MouseEventHandler(this, &FormAPMFinal::OnMouseMove);
 
-			ElectricSandboxPanel->MouseClick += gcnew MouseEventHandler(this, &Form1::MClick);
-			ElectricSandboxPanel->MouseDown += gcnew MouseEventHandler(this, &Form1::Mdown);
-			ElectricSandboxPanel->MouseUp += gcnew MouseEventHandler(this, &Form1::Mup);
-			ElectricSandboxPanel->MouseMove += gcnew MouseEventHandler(this, &Form1::OnMouseMove);
+			ElectricSandboxPanel->MouseClick += gcnew MouseEventHandler(this, &FormAPMFinal::MClick);
+			ElectricSandboxPanel->MouseDown += gcnew MouseEventHandler(this, &FormAPMFinal::Mdown);
+			ElectricSandboxPanel->MouseUp += gcnew MouseEventHandler(this, &FormAPMFinal::Mup);
+			ElectricSandboxPanel->MouseMove += gcnew MouseEventHandler(this, &FormAPMFinal::OnMouseMove);
 
 			//timer and rendering
 			this->DoubleBuffered = true; //better rendering, otherwise it looks trash
 			timer = gcnew Timer(); // simulation
 			timer->Interval = 15;
-			timer->Tick += gcnew EventHandler(this, &Form1::Tick);
+			timer->Tick += gcnew EventHandler(this, &FormAPMFinal::Tick);
 			timer->Stop();
 
 			//Charges
@@ -124,15 +124,15 @@ namespace CppCLRWinFormsProject {
 			mag = new vector<inducMag>();
 
 			//So that the works in sandbox pannels work, they werent for some reason
-			this->SandboxAddChargeB->Click += gcnew System::EventHandler(this, &Form1::SandboxAddChargeB_Click);
-			this->SandboxDeleteChargesB->Click += gcnew System::EventHandler(this, &Form1::SandboxDeleteChargesB_Click);
-			this->SandboxResetChargesB->Click += gcnew System::EventHandler(this, &Form1::SandboxResetChargesB_Click);
-			this->SandboxReversePolB->Click += gcnew System::EventHandler(this, &Form1::SandboxReversePolB_Click);
-			this->SandboxNoneB->Click += gcnew System::EventHandler(this, &Form1::SandboxNoneB_Click);
-			this->SandboxSimulateCB->CheckedChanged += gcnew System::EventHandler(this, &Form1::SandboxSimulateCB_CheckedChanged);
-			this->SandboxInspectCB->CheckedChanged += gcnew System::EventHandler(this, &Form1::SandboxInspectCB_CheckedChanged);
-			this->SandboxVecFieldCB->CheckedChanged += gcnew System::EventHandler(this, &Form1::SandboxVecFieldCB_CheckedChanged);
-			this->SandboxDragCB->CheckedChanged += gcnew System::EventHandler(this, &Form1::SandboxDragCB_CheckedChanged);
+			this->SandboxAddChargeB->Click += gcnew System::EventHandler(this, &FormAPMFinal::SandboxAddChargeB_Click);
+			this->SandboxDeleteChargesB->Click += gcnew System::EventHandler(this, &FormAPMFinal::SandboxDeleteChargesB_Click);
+			this->SandboxResetChargesB->Click += gcnew System::EventHandler(this, &FormAPMFinal::SandboxResetChargesB_Click);
+			this->SandboxReversePolB->Click += gcnew System::EventHandler(this, &FormAPMFinal::SandboxReversePolB_Click);
+			this->SandboxNoneB->Click += gcnew System::EventHandler(this, &FormAPMFinal::SandboxNoneB_Click);
+			this->SandboxSimulateCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::SandboxSimulateCB_CheckedChanged);
+			this->SandboxInspectCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::SandboxInspectCB_CheckedChanged);
+			this->SandboxVecFieldCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::SandboxVecFieldCB_CheckedChanged);
+			this->SandboxDragCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::SandboxDragCB_CheckedChanged);
 
 		}
 	private: System::Windows::Forms::Timer^ timer;
@@ -411,7 +411,7 @@ namespace CppCLRWinFormsProject {
 		/// Clean up any resources being used.
 		/// </summary>
 
-		~Form1()
+		~FormAPMFinal()
 		{
 			delete Q;
 			delete testCharge;
@@ -534,7 +534,7 @@ namespace CppCLRWinFormsProject {
 			this->checkBox1->TabIndex = 0;
 			this->checkBox1->Text = L"Play";
 			this->checkBox1->UseVisualStyleBackColor = false;
-			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &Form1::checkBox1_CheckedChanged);
+			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::checkBox1_CheckedChanged);
 			// 
 			// button1
 			// 
@@ -547,7 +547,7 @@ namespace CppCLRWinFormsProject {
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Add Charge";
 			this->button1->UseVisualStyleBackColor = false;
-			this->button1->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &Form1::button1_MouseClick);
+			this->button1->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &FormAPMFinal::button1_MouseClick);
 			// 
 			// button3
 			// 
@@ -560,7 +560,7 @@ namespace CppCLRWinFormsProject {
 			this->button3->TabIndex = 3;
 			this->button3->Text = L"Delete Charges";
 			this->button3->UseVisualStyleBackColor = false;
-			this->button3->Click += gcnew System::EventHandler(this, &Form1::button3_Click);
+			this->button3->Click += gcnew System::EventHandler(this, &FormAPMFinal::button3_Click);
 			// 
 			// button4
 			// 
@@ -573,7 +573,7 @@ namespace CppCLRWinFormsProject {
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Do walls";
 			this->button4->UseVisualStyleBackColor = false;
-			this->button4->Click += gcnew System::EventHandler(this, &Form1::button4_Click);
+			this->button4->Click += gcnew System::EventHandler(this, &FormAPMFinal::button4_Click);
 			// 
 			// checkBox2
 			// 
@@ -589,7 +589,7 @@ namespace CppCLRWinFormsProject {
 			this->checkBox2->TabIndex = 5;
 			this->checkBox2->Text = L"Easy";
 			this->checkBox2->UseVisualStyleBackColor = false;
-			this->checkBox2->CheckedChanged += gcnew System::EventHandler(this, &Form1::checkBox2_CheckedChanged);
+			this->checkBox2->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::checkBox2_CheckedChanged);
 			// 
 			// checkBox3
 			// 
@@ -603,7 +603,7 @@ namespace CppCLRWinFormsProject {
 			this->checkBox3->TabIndex = 6;
 			this->checkBox3->Text = L"Medium";
 			this->checkBox3->UseVisualStyleBackColor = false;
-			this->checkBox3->CheckedChanged += gcnew System::EventHandler(this, &Form1::checkBox3_CheckedChanged);
+			this->checkBox3->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::checkBox3_CheckedChanged);
 			// 
 			// checkBox4
 			// 
@@ -617,7 +617,7 @@ namespace CppCLRWinFormsProject {
 			this->checkBox4->TabIndex = 7;
 			this->checkBox4->Text = L"Hard";
 			this->checkBox4->UseVisualStyleBackColor = false;
-			this->checkBox4->CheckedChanged += gcnew System::EventHandler(this, &Form1::checkBox4_CheckedChanged);
+			this->checkBox4->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::checkBox4_CheckedChanged);
 			// 
 			// chargesLeftLabel
 			// 
@@ -640,7 +640,7 @@ namespace CppCLRWinFormsProject {
 			this->ResetCharges->TabIndex = 9;
 			this->ResetCharges->Text = L"Reset Charges";
 			this->ResetCharges->UseVisualStyleBackColor = false;
-			this->ResetCharges->Click += gcnew System::EventHandler(this, &Form1::ResetCharges_Click);
+			this->ResetCharges->Click += gcnew System::EventHandler(this, &FormAPMFinal::ResetCharges_Click);
 			// 
 			// TempGoal
 			// 
@@ -652,7 +652,7 @@ namespace CppCLRWinFormsProject {
 			this->TempGoal->TabIndex = 10;
 			this->TempGoal->Text = L"Temporary Goal";
 			this->TempGoal->UseVisualStyleBackColor = false;
-			this->TempGoal->Click += gcnew System::EventHandler(this, &Form1::TempGoal_Click);
+			this->TempGoal->Click += gcnew System::EventHandler(this, &FormAPMFinal::TempGoal_Click);
 			// 
 			// EVectorField
 			// 
@@ -665,7 +665,7 @@ namespace CppCLRWinFormsProject {
 			this->EVectorField->TabIndex = 11;
 			this->EVectorField->Text = L"Vector Field";
 			this->EVectorField->UseVisualStyleBackColor = true;
-			this->EVectorField->CheckedChanged += gcnew System::EventHandler(this, &Form1::EVectorField_CheckedChanged);
+			this->EVectorField->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::EVectorField_CheckedChanged);
 			// 
 			// ReversePolarity
 			// 
@@ -678,7 +678,7 @@ namespace CppCLRWinFormsProject {
 			this->ReversePolarity->TabIndex = 12;
 			this->ReversePolarity->Text = L"Reverse Polarity";
 			this->ReversePolarity->UseVisualStyleBackColor = false;
-			this->ReversePolarity->Click += gcnew System::EventHandler(this, &Form1::ReversePolarity_Click);
+			this->ReversePolarity->Click += gcnew System::EventHandler(this, &FormAPMFinal::ReversePolarity_Click);
 			// 
 			// ResetLevel
 			// 
@@ -691,7 +691,7 @@ namespace CppCLRWinFormsProject {
 			this->ResetLevel->TabIndex = 13;
 			this->ResetLevel->Text = L"Reset Level";
 			this->ResetLevel->UseVisualStyleBackColor = false;
-			this->ResetLevel->Click += gcnew System::EventHandler(this, &Form1::ResetLevel_Click);
+			this->ResetLevel->Click += gcnew System::EventHandler(this, &FormAPMFinal::ResetLevel_Click);
 			// 
 			// wallGamePanel1
 			// 
@@ -723,7 +723,7 @@ namespace CppCLRWinFormsProject {
 			this->wallGamePanel1->Size = System::Drawing::Size(1836, 1000);
 			this->wallGamePanel1->TabIndex = 14;
 			this->wallGamePanel1->Visible = false;
-			this->wallGamePanel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::wallGamePanel1_Paint);
+			this->wallGamePanel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FormAPMFinal::wallGamePanel1_Paint);
 			// 
 			// ResetDifficultyB
 			// 
@@ -736,7 +736,7 @@ namespace CppCLRWinFormsProject {
 			this->ResetDifficultyB->TabIndex = 21;
 			this->ResetDifficultyB->Text = L"Reset Dificulty";
 			this->ResetDifficultyB->UseVisualStyleBackColor = false;
-			this->ResetDifficultyB->Click += gcnew System::EventHandler(this, &Form1::ResetDifficultyB_Click);
+			this->ResetDifficultyB->Click += gcnew System::EventHandler(this, &FormAPMFinal::ResetDifficultyB_Click);
 			// 
 			// MagnetsLeftLable
 			// 
@@ -760,7 +760,7 @@ namespace CppCLRWinFormsProject {
 			this->GameInducMagB->TabIndex = 19;
 			this->GameInducMagB->Text = L"Induce A Changing Magnetic Field";
 			this->GameInducMagB->UseVisualStyleBackColor = false;
-			this->GameInducMagB->Click += gcnew System::EventHandler(this, &Form1::GameInducMagB_Click);
+			this->GameInducMagB->Click += gcnew System::EventHandler(this, &FormAPMFinal::GameInducMagB_Click);
 			// 
 			// HighScore
 			// 
@@ -784,7 +784,7 @@ namespace CppCLRWinFormsProject {
 			this->noneButton->TabIndex = 17;
 			this->noneButton->Text = L"None";
 			this->noneButton->UseVisualStyleBackColor = false;
-			this->noneButton->Click += gcnew System::EventHandler(this, &Form1::noneButton_Click);
+			this->noneButton->Click += gcnew System::EventHandler(this, &FormAPMFinal::noneButton_Click);
 			// 
 			// dragCheckBox
 			// 
@@ -800,7 +800,7 @@ namespace CppCLRWinFormsProject {
 			this->dragCheckBox->TabIndex = 16;
 			this->dragCheckBox->Text = L"Drag Charges";
 			this->dragCheckBox->UseVisualStyleBackColor = false;
-			this->dragCheckBox->CheckedChanged += gcnew System::EventHandler(this, &Form1::dragCheckBox_CheckedChanged);
+			this->dragCheckBox->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::dragCheckBox_CheckedChanged);
 			// 
 			// Level
 			// 
@@ -823,7 +823,7 @@ namespace CppCLRWinFormsProject {
 			this->ExitWallGame->TabIndex = 14;
 			this->ExitWallGame->Text = L"Exit Game";
 			this->ExitWallGame->UseVisualStyleBackColor = false;
-			this->ExitWallGame->Click += gcnew System::EventHandler(this, &Form1::ExitWallGame_Click);
+			this->ExitWallGame->Click += gcnew System::EventHandler(this, &FormAPMFinal::ExitWallGame_Click);
 			// 
 			// playWallGame
 			// 
@@ -838,7 +838,7 @@ namespace CppCLRWinFormsProject {
 			this->playWallGame->TabIndex = 15;
 			this->playWallGame->Text = L"Play Wall Game";
 			this->playWallGame->UseVisualStyleBackColor = false;
-			this->playWallGame->Click += gcnew System::EventHandler(this, &Form1::playWalllGame_Click);
+			this->playWallGame->Click += gcnew System::EventHandler(this, &FormAPMFinal::playWalllGame_Click);
 			// 
 			// homePanel
 			// 
@@ -864,7 +864,7 @@ namespace CppCLRWinFormsProject {
 			this->ElectricSandbox->TabIndex = 16;
 			this->ElectricSandbox->Text = L"Electric Sandbox";
 			this->ElectricSandbox->UseVisualStyleBackColor = false;
-			this->ElectricSandbox->Click += gcnew System::EventHandler(this, &Form1::ElectricSandbox_Click);
+			this->ElectricSandbox->Click += gcnew System::EventHandler(this, &FormAPMFinal::ElectricSandbox_Click);
 			// 
 			// ElectricSandboxPanel
 			// 
@@ -903,7 +903,7 @@ namespace CppCLRWinFormsProject {
 			this->ElectricSandboxPanel->Size = System::Drawing::Size(1836, 1000);
 			this->ElectricSandboxPanel->TabIndex = 18;
 			this->ElectricSandboxPanel->Visible = false;
-			this->ElectricSandboxPanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::ElectricSandboxPanel_Paint);
+			this->ElectricSandboxPanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FormAPMFinal::ElectricSandboxPanel_Paint);
 			// 
 			// EditTestChargePanel
 			// 
@@ -937,7 +937,7 @@ namespace CppCLRWinFormsProject {
 			this->TesQXB->TabIndex = 10;
 			this->TesQXB->Text = L"X";
 			this->TesQXB->UseVisualStyleBackColor = false;
-			this->TesQXB->Click += gcnew System::EventHandler(this, &Form1::TesQXB_Click);
+			this->TesQXB->Click += gcnew System::EventHandler(this, &FormAPMFinal::TesQXB_Click);
 			// 
 			// ApplyPosTestQB
 			// 
@@ -950,7 +950,7 @@ namespace CppCLRWinFormsProject {
 			this->ApplyPosTestQB->TabIndex = 9;
 			this->ApplyPosTestQB->Text = L"Apply Position";
 			this->ApplyPosTestQB->UseVisualStyleBackColor = false;
-			this->ApplyPosTestQB->Click += gcnew System::EventHandler(this, &Form1::ApplyPosTestQB_Click);
+			this->ApplyPosTestQB->Click += gcnew System::EventHandler(this, &FormAPMFinal::ApplyPosTestQB_Click);
 			// 
 			// TestQMassNumericUpDown
 			// 
@@ -963,7 +963,7 @@ namespace CppCLRWinFormsProject {
 			this->TestQMassNumericUpDown->Size = System::Drawing::Size(49, 20);
 			this->TestQMassNumericUpDown->TabIndex = 8;
 			this->TestQMassNumericUpDown->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 5, 0, 0, 0 });
-			this->TestQMassNumericUpDown->ValueChanged += gcnew System::EventHandler(this, &Form1::TestQMassNumericUpDown_ValueChanged);
+			this->TestQMassNumericUpDown->ValueChanged += gcnew System::EventHandler(this, &FormAPMFinal::TestQMassNumericUpDown_ValueChanged);
 			// 
 			// TestQChargeNumericUpDown
 			// 
@@ -976,7 +976,7 @@ namespace CppCLRWinFormsProject {
 			this->TestQChargeNumericUpDown->Size = System::Drawing::Size(50, 20);
 			this->TestQChargeNumericUpDown->TabIndex = 7;
 			this->TestQChargeNumericUpDown->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 5, 0, 0, 0 });
-			this->TestQChargeNumericUpDown->ValueChanged += gcnew System::EventHandler(this, &Form1::TestQChargeNumericUpDown_ValueChanged);
+			this->TestQChargeNumericUpDown->ValueChanged += gcnew System::EventHandler(this, &FormAPMFinal::TestQChargeNumericUpDown_ValueChanged);
 			// 
 			// TestQYPosTextbox
 			// 
@@ -1077,7 +1077,7 @@ namespace CppCLRWinFormsProject {
 			this->EditChargesCB->TabIndex = 25;
 			this->EditChargesCB->Text = L"Edit Charges";
 			this->EditChargesCB->UseVisualStyleBackColor = true;
-			this->EditChargesCB->CheckedChanged += gcnew System::EventHandler(this, &Form1::EditChargesCB_CheckedChanged);
+			this->EditChargesCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::EditChargesCB_CheckedChanged);
 			// 
 			// editChargePanel
 			// 
@@ -1111,7 +1111,7 @@ namespace CppCLRWinFormsProject {
 			this->ApplyPosB->TabIndex = 10;
 			this->ApplyPosB->Text = L"Apply Position";
 			this->ApplyPosB->UseVisualStyleBackColor = false;
-			this->ApplyPosB->Click += gcnew System::EventHandler(this, &Form1::ApplyPosB_Click);
+			this->ApplyPosB->Click += gcnew System::EventHandler(this, &FormAPMFinal::ApplyPosB_Click);
 			// 
 			// YPosLable
 			// 
@@ -1162,7 +1162,7 @@ namespace CppCLRWinFormsProject {
 			this->ExitEditChargePanelB->TabIndex = 5;
 			this->ExitEditChargePanelB->Text = L"X";
 			this->ExitEditChargePanelB->UseVisualStyleBackColor = false;
-			this->ExitEditChargePanelB->Click += gcnew System::EventHandler(this, &Form1::ExitEditChargePanelB_Click);
+			this->ExitEditChargePanelB->Click += gcnew System::EventHandler(this, &FormAPMFinal::ExitEditChargePanelB_Click);
 			// 
 			// MassNumericUpDown
 			// 
@@ -1176,7 +1176,7 @@ namespace CppCLRWinFormsProject {
 			this->MassNumericUpDown->Size = System::Drawing::Size(50, 20);
 			this->MassNumericUpDown->TabIndex = 4;
 			this->MassNumericUpDown->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 5, 0, 0, 0 });
-			this->MassNumericUpDown->ValueChanged += gcnew System::EventHandler(this, &Form1::MassNumericUpDown_ValueChanged);
+			this->MassNumericUpDown->ValueChanged += gcnew System::EventHandler(this, &FormAPMFinal::MassNumericUpDown_ValueChanged);
 			// 
 			// MassLable
 			// 
@@ -1214,7 +1214,7 @@ namespace CppCLRWinFormsProject {
 			this->ChargeNumericUpDown->Size = System::Drawing::Size(50, 20);
 			this->ChargeNumericUpDown->TabIndex = 1;
 			this->ChargeNumericUpDown->Value = System::Decimal(gcnew cli::array< System::Int32 >(4) { 5, 0, 0, 0 });
-			this->ChargeNumericUpDown->ValueChanged += gcnew System::EventHandler(this, &Form1::ChargeNumericUpDown_ValueChanged);
+			this->ChargeNumericUpDown->ValueChanged += gcnew System::EventHandler(this, &FormAPMFinal::ChargeNumericUpDown_ValueChanged);
 			// 
 			// ChargeNumberLable
 			// 
@@ -1240,7 +1240,7 @@ namespace CppCLRWinFormsProject {
 			this->HideAndShowCB->TabIndex = 23;
 			this->HideAndShowCB->Text = L"HIDE CONTROLS";
 			this->HideAndShowCB->UseVisualStyleBackColor = true;
-			this->HideAndShowCB->CheckedChanged += gcnew System::EventHandler(this, &Form1::HideAndShowCB_CheckedChanged);
+			this->HideAndShowCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::HideAndShowCB_CheckedChanged);
 			// 
 			// EColorLabel
 			// 
@@ -1280,7 +1280,7 @@ namespace CppCLRWinFormsProject {
 			this->ELinesColorSelBn->Text = L"Choose Lines Color";
 			this->ELinesColorSelBn->UseVisualStyleBackColor = false;
 			this->ELinesColorSelBn->Visible = false;
-			this->ELinesColorSelBn->Click += gcnew System::EventHandler(this, &Form1::ELinesColorSelBn_Click);
+			this->ELinesColorSelBn->Click += gcnew System::EventHandler(this, &FormAPMFinal::ELinesColorSelBn_Click);
 			// 
 			// VecFieldColor
 			// 
@@ -1297,7 +1297,7 @@ namespace CppCLRWinFormsProject {
 			this->VecFieldColor->Size = System::Drawing::Size(179, 23);
 			this->VecFieldColor->TabIndex = 19;
 			this->VecFieldColor->Text = L"Line Field Color";
-			this->VecFieldColor->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::VecFieldColor_SelectedIndexChanged);
+			this->VecFieldColor->SelectedIndexChanged += gcnew System::EventHandler(this, &FormAPMFinal::VecFieldColor_SelectedIndexChanged);
 			// 
 			// SimulateComboBox
 			// 
@@ -1317,7 +1317,7 @@ namespace CppCLRWinFormsProject {
 			this->SimulateComboBox->Size = System::Drawing::Size(173, 23);
 			this->SimulateComboBox->TabIndex = 18;
 			this->SimulateComboBox->Text = L"Simulate Options";
-			this->SimulateComboBox->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::SimulateComboBox_SelectedIndexChanged);
+			this->SimulateComboBox->SelectedIndexChanged += gcnew System::EventHandler(this, &FormAPMFinal::SimulateComboBox_SelectedIndexChanged);
 			// 
 			// ActivateTesQWarning
 			// 
@@ -1358,7 +1358,7 @@ namespace CppCLRWinFormsProject {
 			this->TestChargeActivate->TabIndex = 15;
 			this->TestChargeActivate->Text = L"Activate Test Charge";
 			this->TestChargeActivate->UseVisualStyleBackColor = true;
-			this->TestChargeActivate->CheckedChanged += gcnew System::EventHandler(this, &Form1::TestChargeActivate_CheckedChanged);
+			this->TestChargeActivate->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::TestChargeActivate_CheckedChanged);
 			// 
 			// DrawQM
 			// 
@@ -1374,7 +1374,7 @@ namespace CppCLRWinFormsProject {
 			this->DrawQM->TabIndex = 14;
 			this->DrawQM->Text = L"Draw Objects";
 			this->DrawQM->UseVisualStyleBackColor = true;
-			this->DrawQM->CheckedChanged += gcnew System::EventHandler(this, &Form1::DrawQM_CheckedChanged);
+			this->DrawQM->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::DrawQM_CheckedChanged);
 			// 
 			// EFieldLinesGen
 			// 
@@ -1395,7 +1395,7 @@ namespace CppCLRWinFormsProject {
 			this->EFieldLinesGen->Size = System::Drawing::Size(179, 23);
 			this->EFieldLinesGen->TabIndex = 13;
 			this->EFieldLinesGen->Text = L"Field Line Generation";
-			this->EFieldLinesGen->SelectedIndexChanged += gcnew System::EventHandler(this, &Form1::EFieldLinesGen_SelectedIndexChanged);
+			this->EFieldLinesGen->SelectedIndexChanged += gcnew System::EventHandler(this, &FormAPMFinal::EFieldLinesGen_SelectedIndexChanged);
 			// 
 			// DebugLable
 			// 
@@ -1422,7 +1422,7 @@ namespace CppCLRWinFormsProject {
 			this->SandboxInduceMagB->TabIndex = 11;
 			this->SandboxInduceMagB->Text = L"Induce a Changing Magnetic Field";
 			this->SandboxInduceMagB->UseVisualStyleBackColor = false;
-			this->SandboxInduceMagB->Click += gcnew System::EventHandler(this, &Form1::SandboxInduceMagB_Click);
+			this->SandboxInduceMagB->Click += gcnew System::EventHandler(this, &FormAPMFinal::SandboxInduceMagB_Click);
 			// 
 			// EFieldLinesCB
 			// 
@@ -1436,7 +1436,7 @@ namespace CppCLRWinFormsProject {
 			this->EFieldLinesCB->TabIndex = 10;
 			this->EFieldLinesCB->Text = L"E Field Lines";
 			this->EFieldLinesCB->UseVisualStyleBackColor = true;
-			this->EFieldLinesCB->CheckedChanged += gcnew System::EventHandler(this, &Form1::EFieldLinesCB_CheckedChanged);
+			this->EFieldLinesCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::EFieldLinesCB_CheckedChanged);
 			// 
 			// ExitESandboxB
 			// 
@@ -1449,7 +1449,7 @@ namespace CppCLRWinFormsProject {
 			this->ExitESandboxB->TabIndex = 9;
 			this->ExitESandboxB->Text = L"Exit Electric Sandbox";
 			this->ExitESandboxB->UseVisualStyleBackColor = false;
-			this->ExitESandboxB->Click += gcnew System::EventHandler(this, &Form1::ExitESandboxB_Click);
+			this->ExitESandboxB->Click += gcnew System::EventHandler(this, &FormAPMFinal::ExitESandboxB_Click);
 			// 
 			// SandboxVecFieldCB
 			// 
@@ -1577,7 +1577,7 @@ namespace CppCLRWinFormsProject {
 			this->LinesColorDialog->Color = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)));
 			// 
-			// Form1
+			// FormAPMFinal
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
@@ -1587,10 +1587,10 @@ namespace CppCLRWinFormsProject {
 			this->Controls->Add(this->ElectricSandboxPanel);
 			this->Controls->Add(this->homePanel);
 			this->Controls->Add(this->wallGamePanel1);
-			this->Name = L"Form1";
-			this->Text = L"Form1";
+			this->Name = L"FormAPMFinal";
+			this->Text = L"FormAPMFinal";
 			this->TopMost = true;
-			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::Form1_Paint);
+			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FormAPMFinal::FormAPMFinal_Paint);
 			this->wallGamePanel1->ResumeLayout(false);
 			this->wallGamePanel1->PerformLayout();
 			this->homePanel->ResumeLayout(false);
@@ -1899,7 +1899,7 @@ namespace CppCLRWinFormsProject {
 			target->BringToFront();
 		}
 
-	private: System::Void Form1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+	private: System::Void FormAPMFinal_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 	}
 
 	private: void Tick(Object^ sender, EventArgs^ e) {
