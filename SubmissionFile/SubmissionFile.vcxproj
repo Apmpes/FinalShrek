@@ -136,12 +136,20 @@
     <ClInclude Include="EFieldGrid.h" />
     <ClInclude Include="ElectricClasses.h" />
     <ClInclude Include="ELineField.h" />
+    <ClInclude Include="EMWaveForm.h" />
     <ClInclude Include="FieldLineTracer.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Form1ANB.h" />
     <ClInclude Include="Form1_UH.h" />
+    <ClInclude Include="FourierForm.h" />
     <ClInclude Include="GameMode.h" />
+    <ClInclude Include="Grapher.h" />
+    <ClInclude Include="Inputs.h" />
+    <ClInclude Include="RCForm.h" />
+    <ClInclude Include="RLCForm.h" />
+    <ClInclude Include="Simulation.h" />
     <ClInclude Include="UIButtons.h" />
     <ClInclude Include="InducedMagField.h" />
     <ClInclude Include="inspectCalculator1.h" />

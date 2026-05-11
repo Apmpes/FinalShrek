@@ -220,7 +220,7 @@ namespace CppCLRWinFormsProject {
         {
             Rectangle rect = this->ClientRectangle;
 
-            array<Point>^ corners =
+            cli::array<Point>^ corners =
             {
                 Point(rect.Left, rect.Top),
                 Point(rect.Right, rect.Top),
@@ -231,7 +231,7 @@ namespace CppCLRWinFormsProject {
             PathGradientBrush^ bg = gcnew PathGradientBrush(corners);
 
             bg->CenterColor = Color::FromArgb(255, 20, 20, 40);
-            bg->SurroundColors = gcnew array<Color>{Color::FromArgb(255, 5, 5, 15)};
+            bg->SurroundColors = gcnew cli::array<Color>{Color::FromArgb(255, 5, 5, 15)};
 
             g->FillRectangle(bg, rect);
         }
@@ -303,7 +303,7 @@ namespace CppCLRWinFormsProject {
             PointF p3(to.X - dx * size - px * size * 0.5f,
                 to.Y - dy * size - py * size * 0.5f);
 
-            array<PointF>^ tri = gcnew array<PointF>{ p1, p2, p3 };
+            cli::array<PointF>^ tri = gcnew cli::array<PointF>{ p1, p2, p3 };
 
             SolidBrush^ b = gcnew SolidBrush(Color::FromArgb(255, 0, 220, 255));
             g->FillPolygon(b, tri);
@@ -317,7 +317,7 @@ namespace CppCLRWinFormsProject {
             Pen^ glow = gcnew Pen(Color::FromArgb(40, 0, 180, 255), 6.0f);
             glow->LineJoin = LineJoin::Round;
 
-            array<PointF>^ arr = pts->ToArray();
+            cli::array<PointF>^ arr = pts->ToArray();
 
             g->DrawLines(glow, arr);
 
