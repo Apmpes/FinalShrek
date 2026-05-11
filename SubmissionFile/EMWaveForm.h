@@ -11,7 +11,7 @@ namespace CppCLRWinFormsProject {
 	using namespace System::Drawing;
 
 	ref struct EMWaveResult {
-		array<double>^ ePoints;
+		cli::array<double>^ ePoints;
 		double totalTime;
 		double eMin;
 		double eMax;
@@ -25,7 +25,7 @@ namespace CppCLRWinFormsProject {
 		double totalTime = 4.0 * period;
 		double dt = totalTime / steps;
 
-		array<double>^ e = gcnew array<double>(steps);
+		cli::array<double>^ e = gcnew cli::array<double>(steps);
 		double eMin = Double::MaxValue;
 		double eMax = Double::MinValue;
 
@@ -69,7 +69,7 @@ namespace CppCLRWinFormsProject {
 		System::Windows::Forms::Timer^ simTimer;
 		System::ComponentModel::IContainer^ components;
 
-		array<double>^ yPoints;
+		cli::array<double>^ yPoints;
 		int                        drawIndex;
 		System::Drawing::Bitmap^ bmp;
 		System::Drawing::Graphics^ g;
