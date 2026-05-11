@@ -25,6 +25,8 @@ namespace CppCLRWinFormsProject {
         {
             InitializeComponent();
 
+            this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+
             sim = gcnew MagneticSimWrapper();
             tdMode = gcnew TowerDefenseMode(sim);
 

@@ -179,7 +179,13 @@ namespace CppCLRWinFormsProject {
             this->HelpPagePanel->Controls->Add(this->FreqQuestTitle);
             this->HelpPagePanel->Controls->Add(this->HelpPageTitle);
             this->HelpPagePanel->BackColor = System::Drawing::Color::FromArgb(28, 28, 45);
-            this->HelpPagePanel->Dock = System::Windows::Forms::DockStyle::Right;
+            this->HelpPagePanel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
+                System::Windows::Forms::AnchorStyles::Top |
+                System::Windows::Forms::AnchorStyles::Right
+                );
+          
+            this->HelpPagePanel->Location = System::Drawing::Point(690, 0);
+            this->HelpPagePanel->Size = System::Drawing::Size(312, 572);
             this->HelpPagePanel->Width = 312;
             this->HelpPagePanel->Name = L"HelpPagePanel";
             this->HelpPagePanel->TabIndex = 3;
@@ -249,7 +255,7 @@ namespace CppCLRWinFormsProject {
                 L"please contact your group members.\n\n"
                 L"Add your contact details here.\n\n"
                 L"Alex Naylor: Graphing Simulator\nA.Naylor-Beggs1-25@student.lboro.ac.uk\n\n"
-                L"Andres Perez: Electromagnetism Simulator\na.perez-maillard1-24@student.lboro.ac.uk\n\n"
+                L"Andres Perez: Electromagnetism Simulator\nA.Perez-Maillard1-24@student.lboro.ac.uk\n\n"
                 L"Uzair Hafesji: Magnetism Simulator \nU.Hafesji1-25@student.lboro.ac.uk";
 
             this->EnterHelpPage->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
@@ -303,6 +309,8 @@ namespace CppCLRWinFormsProject {
         }
         System::Void EnterHelpPage_Click(System::Object^ sender, System::EventArgs^ e) {
             HelpPagePanel->Visible = true;
+            HelpPagePanel->BringToFront();
         }
     };
 }
+

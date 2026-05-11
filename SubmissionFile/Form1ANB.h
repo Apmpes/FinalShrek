@@ -34,6 +34,8 @@ namespace CppCLRWinFormsProject {
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+
 			this->lblTitle = (gcnew System::Windows::Forms::Label());
 			this->btnRLC = (gcnew System::Windows::Forms::Button());
 			this->btnRC = (gcnew System::Windows::Forms::Button());
@@ -173,7 +175,7 @@ namespace CppCLRWinFormsProject {
 }
 
 
-//INCLUDE  the folloiwing to launch mine in project:
+//include this   to launch mine in project:
 
 // #include "Form1ANB.h"
 
