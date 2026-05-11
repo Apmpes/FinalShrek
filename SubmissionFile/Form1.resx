@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ContactTxt.Text" xml:space="preserve">
+    <value>If you have any queries, please 
+contact the developers: 
+
+Alex Naylor Beggs: Graphing Simulator
+A.Naylor-Beggs1-25@student.lboro.ac.uk 
+
+Andres Perez: Electromagnetism Simulator
+a.perez-maillard1-24@student.lboro.ac.uk
+
+Uzair Hafesji: Magnetism Simulator 
+U.Hafesji1-25@student.lboro.ac.uk</value>
+  </data>
 </root>

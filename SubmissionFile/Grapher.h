@@ -33,9 +33,9 @@ System::Drawing::Bitmap^ DrawAxes(int w, int h, String^ xLabel, String^ yLabel, 
 }
 
 //Scaling function
-array<double>^ ScaleToPixels(array<double>^ values, int h, double yMin, double yMax) {
+cli::array<double>^ ScaleToPixels(cli::array<double>^ values, int h, double yMin, double yMax) {
 	int            steps = values->Length;
-	array<double>^ pixels = gcnew array<double>(steps);
+	cli::array<double>^ pixels = gcnew cli::array<double>(steps);
 	int            yAxis = (h * 4) / 5;
 	int            yTop = 20;
 
