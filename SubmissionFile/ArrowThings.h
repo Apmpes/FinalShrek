@@ -4,18 +4,14 @@
 #include <cmath>
 using namespace System::Drawing;
 
-int intensity(Vec2D vec) {
-	double mag = sqrt(vec.getX() * vec.getX() + vec.getY() * vec.getY());
-	if (mag > 255) mag = 255;
-	return mag;
-}
+
 double arSize(Vec2D vec, double maxSize, double minSize, double scale) {
 	double mag = sqrt(vec.getX() * vec.getX() + vec.getY() * vec.getY());
 	double length;
-	if (mag > 1000) { mag = 1000; }
-	length = mag;
-	length *= scale;
-	if (length > maxSize) length = maxSize;
+	if (mag > 1000) { mag = 1000; } // max mag
+	length = mag; //directly proportional
+	length *= scale; // needed 
+	if (length > maxSize) length = maxSize; //clamping
 	if (length < minSize) length = minSize;
 	return length;
 }
@@ -25,7 +21,7 @@ void DrawArrow(Graphics^ g, double x, double y, double theta, double d, double s
 	double arrowSize = size * 0.5;
 	double x1 = x + d / 2; //to have the arrow starting at center of circle
 	double y1 = y + d / 2;
-	double x2 = x1 + hyp * cos(theta);
+	double x2 = x1 + hyp * cos(theta); //normal trig
 	double y2 = y1 + hyp * sin(theta);
 
 	double arrowAngle = 3.14159 / 6;

@@ -55,7 +55,7 @@ public: inducMag(double idbdt, Vec2D ipos, double idiameter, int IinOrOut, int I
 
 
 Vec2D getEfromInducMag(vector<inducMag>& mag, double x, double y) { //in a circle symmetry, E(x,y) = 1/2 dB/dt *(y,-x)
-	Vec2D E(0, 0);
+	Vec2D E(0, 0); //doing normal operation
 	for (int i = 0; i < mag.size(); ++i) {
 
 		double dx = (x - mag[i].getX());
@@ -65,15 +65,14 @@ Vec2D getEfromInducMag(vector<inducMag>& mag, double x, double y) { //in a circl
 		if (r <= tol) r = tol;
 
 		double k = 0.5 * mag[i].getDbdt();
-		float scale = 1e3 * 2.2247;
-		double Ex = k * dy * mag[i].getInOrOut() / (r * r); //still check if 1/r or 1/r*r physics correctness.
+		float scale = 1e3 * 2.2247; //the 2.2247 scale is to keep the things constant after I had to rescale when I added the edit charges
+		double Ex = k * dy * mag[i].getInOrOut() / (r * r); //still physics coreectness is 1/r but in this simulation it does not look good
 		double Ey = -(k * dx) * mag[i].getInOrOut() / (r * r);
-		//double theta = atan2(Ey, Ex);
 		E.addComp(Ex * scale, Ey * scale);
 	}
 	return E;
 }
-Vec2D totEat(vector<Charge>& Q, vector<inducMag>& mag, double x, double y) {
+Vec2D totEat(vector<Charge>& Q, vector<inducMag>& mag, double x, double y) { //include the E contributions from charge and mags
 
 	Vec2D Etot;
 	Vec2D Emag = getEfromInducMag(mag, x, y);
@@ -110,9 +109,9 @@ Vec2D forceFromMagOnQ(Charge Q, Vec2D E) {
 	return f;
 }
 
-vector<Vec2D> forceCalcAtAllQ(vector<Charge>& Q, vector<inducMag>& mag) {
+vector<Vec2D> forceCalcAtAllQ(vector<Charge>& Q, vector<inducMag>& mag) { // first cal the foce from mag on q, then the force of all q to eachother (pair by pair and not to itslf)
 	vector<Vec2D> force(Q.size(), Vec2D(0, 0));
-	//if (Q.size() <= 1) return vector<Vec2D>(0);
+	
 	for (int i = 0; i < Q.size(); ++i) {
 		Vec2D fe = forceFromMagOnQ(Q[i], getEfromInducMag(mag, Q[i].getX(), Q[i].getY()));
 		force[i] += fe;
@@ -127,7 +126,7 @@ vector<Vec2D> forceCalcAtAllQ(vector<Charge>& Q, vector<inducMag>& mag) {
 	return force;
 }
 
-void simulateAllQcord(vector<Charge>& Q, vector<inducMag>& mag, double dt) {
+void simulateAllQcord(vector<Charge>& Q, vector<inducMag>& mag, double dt) { //normal euler
 	vector<Vec2D> f = forceCalcAtAllQ(Q, mag);
 	for (int i = 0; i < Q.size(); ++i) {
 		Vec2D c = dqCords(Q[i], f[i], dt);
@@ -135,7 +134,7 @@ void simulateAllQcord(vector<Charge>& Q, vector<inducMag>& mag, double dt) {
 
 	}
 }
-void simulateTestQCord(vector<Charge>& Q, vector<inducMag>& mag, Charge& testQ, double dt) {
+void simulateTestQCord(vector<Charge>& Q, vector<inducMag>& mag, Charge& testQ, double dt) { //nromal euler for test q
 	Vec2D E = totEat(Q, mag, testQ.getX(), testQ.getY());
 	Vec2D F = forceFromMagOnQ(testQ, E);
 	Vec2D c = dqCords(testQ, F, dt);

@@ -29,10 +29,11 @@ public:Vec2D(double ix, double iy) : x(ix), y(iy) {}
 	  void addY(double sy) {
 		  y += sy;
 	  }
-	  void addComp(double sx, double sy) {
+	  void addComp(double sx, double sy) { // add to existing vals
 		  y += sy;
 		  x += sx;
 	  }
+	  //useful operators
 	  Vec2D operator+(const Vec2D& vec2) const {
 		  return Vec2D(x + vec2.x, y + vec2.y);
 	  }
@@ -172,7 +173,7 @@ public: walls(int wallWidth, int wallHeight, int iwallN) : width(wallWidth), hei
 		  int spacing = screenWidth / (wallN + 1);
 		  random_device rd;
 		  mt19937 gen(rd());
-		  uniform_int_distribution<int> dist(holeSize, screenHeight / height);
+		  uniform_int_distribution<int> dist(holeSize, screenHeight / height); //the "holed" walls will be up to the randomky generated hole. So if hole  = 3, and hole size = 2, walls 2 and 3 are  skipped
 		  hole = vector<int>(wallN);
 		  for (int i = 0; i < hole.size(); ++i) { //set holes
 			  hole[i] = dist(gen);
@@ -185,7 +186,7 @@ public: walls(int wallWidth, int wallHeight, int iwallN) : width(wallWidth), hei
 			  wx.push_back(spacing * ix + 1.2 * spacing);
 			  wy.push_back(vector<double>());//need to create the x vector first, otherwise crash
 			  for (int iy = 0; iy < (screenHeight / height); ++iy) {
-				  if (iy < (hole[ix] - holeSize) || iy >= hole[ix]) { //if not in hole
+				  if (iy < (hole[ix] - holeSize) || iy >= hole[ix]) { //if not in hole, create the wall with those coords
 					  wy[ix].push_back(height * iy);
 				  }
 			  }

@@ -44,28 +44,6 @@ vector<double> FDir(vector<Charge> Q, double x, double y) {
 	return theta;
 }
 
-// Function that puts it all together
-
-Vec2D ForceCalc(vector<Charge> Q, double x, double y, Charge q) {
-	Vec2D f;
-	size_t n = Q.size();
-	vector<double> EF = EFmagnitude(Q, x, y, q);
-	vector<double> dir = FDir(Q, x, y);
-
-	//To change coords I need to scale force so it is reasonable per frame
-	double Fxtot = 0;
-	double Fytot = 0;
-	double scale = 0.05;
-
-	for (int i = 0; i < n; ++i) {
-		Fxtot += EF[i] * cos(dir[i]);
-		Fytot += EF[i] * sin(dir[i]);
-	}
-	f.setX(Fxtot * scale);
-	f.setY(Fytot * scale);
-	return f;
-}
-
 //Update coords function. Need to get the dx and dy to add in tick function in forms.
 Vec2D dqCords(Charge& q, Vec2D f, double dt) {
 

@@ -5,7 +5,7 @@
 #include "inducedMagField.h"
 
 
-class EFieldGrid {
+class EFieldGrid { //the hole grid is a class instead of single arrows, found it best
 	int horSpacing;
 	int vertSpacing;
 	int row;
@@ -20,11 +20,11 @@ public: EFieldGrid(int Rows, int Colls) : row(Rows), coll(Colls) {}
 		  ax.clear();
 		  ay.clear();
 		  field.clear();
-		  float hSpacing = screenWidth / coll;
+		  float hSpacing = screenWidth / coll; // uniform depending on screen height and width
 		  float vSpacing = screenHeight / row;
 
 		  for (int i = 0; i <= coll; ++i) {
-			  ax.push_back(hSpacing * i);
+			  ax.push_back(hSpacing * i); //initializing all vectors at relevant coords
 			  ay.push_back(vector<double>());
 			  field.push_back(vector<Vec2D>());
 			  for (int b = 0; b <= row; ++b) {
@@ -34,23 +34,17 @@ public: EFieldGrid(int Rows, int Colls) : row(Rows), coll(Colls) {}
 			  }
 		  }
 	  }
-	  void update(vector<Charge> Q) {
-		  for (int i = 0; i <= coll; ++i) {
-			  for (int b = 0; b <= row; ++b) {
-				  field[i][b] = (EFieldCalcAt(Q, ax[i], ay[i][b]));
-			  }
-		  }
-	  }
+	
 	  void updateEfield(vector<Charge> Q, vector<inducMag> mag) {
 		  //update from Q first
-		  if (!Q.empty()) {
+		  if (!Q.empty()) { // only if there is charges
 			  for (int i = 0; i <= coll; ++i) {
 				  for (int b = 0; b <= row; ++b) {
-					  field[i][b] = (EFieldCalcAt(Q, ax[i], ay[i][b]));
+					  field[i][b] = (EFieldCalcAt(Q, ax[i], ay[i][b])); //for all 2d vector of arrows
 				  }
 			  }
 		  } // update from mag 
-		  if (!mag.empty()) {
+		  if (!mag.empty()) { //only if there is mags
 			  for (int i = 0; i <= coll; ++i) {
 				  for (int b = 0; b <= row; ++b) {
 					  if (!Q.empty()) field[i][b] += (getEfromInducMag(mag, ax[i], ay[i][b])); // if there are charges then add to the field
@@ -80,8 +74,7 @@ public: EFieldGrid(int Rows, int Colls) : row(Rows), coll(Colls) {}
 
 		  for (int i = 0; i <= coll; ++i) {
 			  for (int b = 0; b <= row; ++b) {
-				  //Pen^ pen = gcnew Pen(FieldColor(field[i][b]), 3);
-				  Pen^ pen = gcnew Pen(FieldColor(field[i][b]), 3);
+				  Pen^ pen = gcnew Pen(FieldColor(field[i][b]), 3); //each ararow has its own color and size
 				  DrawArrow(g, ax[i], ay[i][b], totFDir(field[i][b]), 0, arSize(field[i][b], EFmaxSize, minSize, EFScale), pen);
 			  }
 		  }

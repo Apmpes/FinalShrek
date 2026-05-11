@@ -58,7 +58,7 @@ Color FieldColor(Vec2D E)
 {
 	double mag = sqrt(E.getX() * E.getX() + E.getY() * E.getY());
 
-	// VISUAL gain 
+	// for scale
 	double visualGain = 1 * 2.2247;
 	mag *= visualGain;
 
@@ -67,37 +67,26 @@ Color FieldColor(Vec2D E)
 	double t = mag / (mag + s);
 	// brightness factor
 	double brightness = mag / (mag + s);  // 0 to 1
-	brightness = pow(brightness, 0.0);    // tweak gamma (very important)
+	brightness = pow(brightness, 0.0);    // tweak 
 
 	// invert so strong field = red
 	t = 1.0 - t;
 
 	if (t < 0.0) t = 0.0;
 	if (t > 1.0) t = 1.0;
-
 	int r, g, b;
-
-	if (t < 0.5)
-	{
+	if (t < 0.5){
 		double k = t / 0.5;
 		r = (int)(200 * (1.0 - k));
 		g = (int)(200 * k);
 		b = 0;
 	}
-	else
-	{
+	else{
 		double k = (t - 0.5) / 0.5;
 		r = 0;
 		g = (int)(200 * (1.0 - k));
 		b = (int)(200 * k);
 	}
-	/*
-	double glow = pow(brightness, 10); // only strong fields glow
-
-	r = (int)(r + (255 - r) * glow);
-	g = (int)(g + (255 - g) * glow);
-	b = (int)(b + (255 - b) * glow);
-	*/
 	r = (int)(r * brightness);
 	g = (int)(g * brightness);
 	b = (int)(b * brightness);
@@ -118,10 +107,10 @@ Color FieldColor_Choice(Vec2D E, Color baseColor)
 	// intensity: 0 (weak)  1 (strong)
 	double intensity = mag / (mag + s);
 
-	// gamma correction (VERY important for visuals)
+	// tweak
 	intensity = pow(intensity, 5);
 
-	// base blue (dark-ish)
+	// passed in base
 	int baseR = baseColor.R;
 	int baseG = baseColor.G;
 	int baseB = baseColor.B;

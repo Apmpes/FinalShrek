@@ -134,6 +134,15 @@ namespace CppCLRWinFormsProject {
 			this->SandboxVecFieldCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::SandboxVecFieldCB_CheckedChanged);
 			this->SandboxDragCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::SandboxDragCB_CheckedChanged);
 
+			//cover checkbox inmage panel things
+			Cover = gcnew System::Windows::Forms::Panel();
+			Cover->BackColor = System::Drawing::Color::FromArgb(0, 0, 30);
+			Cover->Size = System::Drawing::Size(150, 50);
+			Cover->Location = System::Drawing::Point(screenWidth -150, 1);
+			Cover->Anchor =static_cast<System::Windows::Forms::AnchorStyles>(System::Windows::Forms::AnchorStyles::Top |System::Windows::Forms::AnchorStyles::Right);
+			homePanel->Controls->Add(Cover);
+
+			Cover->BringToFront();
 		}
 	private: System::Windows::Forms::Timer^ timer;
 
@@ -401,7 +410,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::TextBox^ TestQXPosTextbox;
 	private: System::Windows::Forms::Button^ TesQXB;
 
-
+		   System::Windows::Forms::Panel^ Cover;
 
 
 	private: System::Windows::Forms::Button^ button1;
@@ -733,7 +742,7 @@ namespace CppCLRWinFormsProject {
 				static_cast<System::Byte>(0)));
 			this->ResetDifficultyB->Location = System::Drawing::Point(22, 232);
 			this->ResetDifficultyB->Name = L"ResetDifficultyB";
-			this->ResetDifficultyB->Size = System::Drawing::Size(75, 44);
+			this->ResetDifficultyB->Size = System::Drawing::Size(80, 44);
 			this->ResetDifficultyB->TabIndex = 21;
 			this->ResetDifficultyB->Text = L"Reset Dificulty";
 			this->ResetDifficultyB->UseVisualStyleBackColor = false;
@@ -828,16 +837,15 @@ namespace CppCLRWinFormsProject {
 			// 
 			// playWallGame
 			// 
-			this->playWallGame->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(220)), static_cast<System::Int32>(static_cast<System::Byte>(70)),
-				static_cast<System::Int32>(static_cast<System::Byte>(20)));
+			this->playWallGame->BackColor = System::Drawing::Color::DarkSlateGray;
 			this->playWallGame->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->playWallGame->ForeColor = System::Drawing::Color::LightGray;
-			this->playWallGame->Location = System::Drawing::Point(732, 465);
+			this->playWallGame->Location = System::Drawing::Point(670, 465);
 			this->playWallGame->Name = L"playWallGame";
 			this->playWallGame->Size = System::Drawing::Size(163, 126);
 			this->playWallGame->TabIndex = 15;
-			this->playWallGame->Text = L"Play Wall Game";
+			this->playWallGame->Text = L"Play Electromag Run";
 			this->playWallGame->UseVisualStyleBackColor = false;
 			this->playWallGame->Click += gcnew System::EventHandler(this, &FormAPMFinal::playWalllGame_Click);
 			// 
@@ -1584,6 +1592,11 @@ namespace CppCLRWinFormsProject {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)));
+			this->homePanel->BackgroundImage =
+				System::Drawing::Image::FromFile("Assets/ElectricSandboxPP.png");
+
+			this->homePanel->BackgroundImageLayout =
+				System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1836, 1000);
 			this->Controls->Add(this->ElectricSandboxPanel);
 			this->Controls->Add(this->homePanel);
@@ -1712,37 +1725,31 @@ namespace CppCLRWinFormsProject {
 			Walls->generate(wallGamePanel1->Width, wallGamePanel1->Height);
 			restartLevel();
 
-			//if (diff == Diff::easy) { easyLevel += 1; level = easyLevel; } //update the relevant level (this way your progress on one dificulty is "saved"
-		//	if (diff == Diff::medium) { medLevel += 1; level = medLevel; }
-		//	if (diff == Diff::hard) { hardLevel += 1; level = hardLevel; }
-
-
 			levelUpdate();
 			highScoreUpdate();
 		}
 		void levelUpdate() {
-			/*
-			if(diff == Diff::easy)Level->Text = "Level : " + easyLevel.ToString();
-			if (diff == Diff::medium)Level->Text = "Level : " + medLevel.ToString();
-			if (diff == Diff::hard)Level->Text = "Level : " + hardLevel.ToString();
-			*/
+	
 			Level->Text = "Level : " + level.ToString();
 			;
 		}
 		void highScoreUpdate() { //depending on the dificulty, have that high score shown
 			if (diff == Diff::easy) {
+				HighScore->Text = "Easy High Score : " + easyHighScore.ToString(); // display the highscore of relevant diff
 				if (easyLevel >= easyHighScore) {
-					easyHighScore = easyLevel;
+					easyHighScore = easyLevel; //if high score needs change then update
 					HighScore->Text = "Easy High Score : " + easyHighScore.ToString();
 				}
 			}
 			if (diff == Diff::medium) {
+				HighScore->Text = "Medium High Score : " + mediumHighScore.ToString();
 				if (medLevel >= mediumHighScore) {
 					mediumHighScore = medLevel;
 					HighScore->Text = "Medium High Score : " + mediumHighScore.ToString();
 				}
 			}
 			if (diff == Diff::hard) {
+				HighScore->Text = "Hard High Score : " + hardHighScore.ToString();
 				if (hardLevel >= hardHighScore) {
 					hardHighScore = hardLevel;
 					HighScore->Text = "Hard High Score : " + hardHighScore.ToString();
@@ -1830,7 +1837,7 @@ namespace CppCLRWinFormsProject {
 
 			Pen^ vArrowPen = gcnew Pen(Color::FromArgb(0, 255, 0), 1);
 			Pen^ fArrowPen = gcnew Pen(Color::FromArgb(255, 0, 0), 1);
-			//keep the drawing order
+			
 			//E field draw (before stationary charges to hide arrows over them)
 			if (sandDoEField && (Q->size() > 0 || mag->size() > 0)) {
 				EField->draw(g, EFMaxSize, minSize, EFScale);
@@ -1849,13 +1856,12 @@ namespace CppCLRWinFormsProject {
 			}
 			//test charge station and draw
 			if (sandboxDrawTestQBox) {
-				g->DrawRectangle(shapePen, ElectricSandboxPanel->Width - 150, ElectricSandboxPanel->Height * 0.45, testCharge->getDiameter() + 10, testCharge->getDiameter() + 10);
-				if (!activeTestQ) g->FillEllipse(testQBrush, ElectricSandboxPanel->Width - 150 + testD / 2 - 5, ElectricSandboxPanel->Height * 0.45 + testD / 2 - 5, testD, testD);
+				g->DrawRectangle(shapePen, ElectricSandboxPanel->Width - 150, ElectricSandboxPanel->Height * 0.43, testCharge->getDiameter() + 10, testCharge->getDiameter() + 10);
+				if (!activeTestQ) g->FillEllipse(testQBrush, ElectricSandboxPanel->Width - 150 + testD / 2 - 5, ElectricSandboxPanel->Height * 0.43 + testD / 2 - 5, testD, testD);
 			}
 			if (activeTestQ) {
 				sandboxTestCharge->fill(g);
 				//Draw force arrow if there is a force acting on test charge. THESE CONDITIONS CAN BE CHANGED TO A BUTTON CLIKC (to say if you want thea arrows to show or not)
-				//Vec2D field = totEat(*Q, *mag, sandboxTestCharge->getX(), sandboxTestCharge->getY());
 				if (testqField->getX() != 0 || testqField->getY() != 0) {
 
 					DrawArrow(g, xs - testD / 2, ys - testD / 2, totFDir(*testqField), testD, arSize(*testqField, qFarMaxSize, qfMinSize, qFarScale), fArrowPen);
@@ -1891,7 +1897,7 @@ namespace CppCLRWinFormsProject {
 			return false;
 		}
 
-		void ShowPanel(Panel^ target) {
+		void ShowPanel(Panel^ target) { //easy way to swithc panels
 			homePanel->Visible = false;
 			wallGamePanel1->Visible = false;
 			ElectricSandboxPanel->Visible = false;
@@ -1922,7 +1928,7 @@ namespace CppCLRWinFormsProject {
 				if (collision) { lostLevel(); }
 				dragQ = false;
 				button4->Visible = false;
-				//mode = Mode::none;
+				
 			}
 
 		}
@@ -1934,14 +1940,14 @@ namespace CppCLRWinFormsProject {
 				if (dragQ) { (*Q)[dragIndex].setPos(Vec2D(mouseX, mouseY)); }
 				if (dragMag) { (*mag)[dragIndex].setPos(Vec2D(mouseX, mouseY)); }
 				if (dragTestQ) {
-					xs = mouseX;
+					xs = mouseX; //for arrow purposes
 					ys = mouseY;
 					sandboxTestCharge->setPos(Vec2D(mouseX, mouseY));
 				}
 				//also drag the edit charges panel with charge and update it
 				if (edit) {
 					if (EditTestChargePanel->Visible) {
-						EditTestChargePanel->Location = Point(sandboxTestCharge->getX() + sandboxTestCharge->getRad(), sandboxTestCharge->getY());
+						EditTestChargePanel->Location = Point(sandboxTestCharge->getX() + sandboxTestCharge->getRad(), sandboxTestCharge->getY()); // fill in the relevant values for the numeric up downs and texboxes
 						TestQXPosTextbox->Text = sandboxTestCharge->getX().ToString();
 						TestQYPosTextbox->Text = switchCoords(sandboxTestCharge->getY(), ElectricSandboxPanel->Height).ToString();
 					}
@@ -1969,7 +1975,7 @@ namespace CppCLRWinFormsProject {
 					testQScreenCollision(*sandboxTestCharge, ElectricSandboxPanel->Width, ElectricSandboxPanel->Height);
 					xs = sandboxTestCharge->getX();
 					ys = sandboxTestCharge->getY();
-					if (sandDoEField) { EField->updateEfield(*Q, *mag); *qCenters = getQCenters(*Q); }
+					if (sandDoEField) { EField->updateEfield(*Q, *mag); *qCenters = getQCenters(*Q); } //always do update the e field when stuff is happening, seen throught the code
 				}
 			}
 			if (sim == sandboxSim::simulateALL) {
@@ -1994,7 +2000,6 @@ namespace CppCLRWinFormsProject {
 					*qCenters = getQCenters(*Q);
 					*EfatQ = getEatQ(*Q);
 					generateLines2(*eLine, *qCenters, fieldLgenerated, maxLife, maxLength, minLength, *Q);
-					//initialElineGen(*eLine, lineFieldColl, lineFieldRow, lineHspacing, lineVspacing,maxLife, minLength);
 					tickCount = 0;
 					DebugLable->Text = "lines alive = " + eLine->size().ToString();
 					if (negQPresent(*Q)) { lineAtEdgeGen(*eLine, ElectricSandboxPanel->Width, ElectricSandboxPanel->Height, lineHspacing, lineVspacing, maxLife, minLength); }
@@ -2002,7 +2007,6 @@ namespace CppCLRWinFormsProject {
 				}
 			}
 			if (generation == gen::RandomCharge) {
-				//rotFieldLines
 				++tickCount;
 				if (tickCount >= maxTick) {
 					*qCenters = getQCenters(*Q);
@@ -2010,7 +2014,7 @@ namespace CppCLRWinFormsProject {
 					++genCycle;
 					RotgenerateLines2(*eLine, *qCenters, *EfatQ, fieldLgenerated, maxLife, maxLength, minLength, *Q, genCycle);
 					tickCount = 0;
-					//initialElineGen(*eLine, lineFieldColl, lineFieldRow, lineHspacing, lineVspacing, maxLife, minLength);
+	
 					drawEfieldLines = true;
 				}
 			}
@@ -2122,7 +2126,7 @@ namespace CppCLRWinFormsProject {
 					   }
 				   }//eddit test charrge
 				   if (inCircle(sandboxTestCharge->getX(), sandboxTestCharge->getY(), sandboxTestCharge->getRad(), mx, my)) {
-					   //MessageBox::Show("Test charge not editable \nProperties: \nMass = 1 \nCharge = 5");
+					   
 					   EditTestChargePanel->Visible = true;
 					   EditTestChargePanel->Location = Point(sandboxTestCharge->getX() + sandboxTestCharge->getRad(), sandboxTestCharge->getY()); //set loc
 					   TestQXPosTextbox->Text = sandboxTestCharge->getX().ToString();// fill in the valeus with those of the charge
@@ -2134,12 +2138,12 @@ namespace CppCLRWinFormsProject {
 				   }
 			   }
 			   if (mode == Mode::addCharge) {
-				   if (ElectricSandboxPanel->Visible) { Q->push_back(Charge(initialQ, 1, sandQd, Vec2D(mx, my), Vec2D(0, 0), Q->size() - 1)); }
+				   if (ElectricSandboxPanel->Visible) { Q->push_back(Charge(initialQ, 1, sandQd, Vec2D(mx, my), Vec2D(0, 0), Q->size() - 1)); } // simply push back a charge with index appropiate for vector
 				   else if (wallGamePanel1->Visible && Qleft > 0) { Q->push_back(Charge(initialQ, 1, Qd, Vec2D(mx, my), Vec2D(0, 0), Q->size() - 1)); }
 				   if (doEField || sandDoEField) { EField->updateEfield(*Q, *mag); *qCenters = getQCenters(*Q); }
 			   }
 			   if (mode == Mode::induceMag) {
-				   if (ElectricSandboxPanel->Visible) { mag->push_back(inducMag(dbdt, Vec2D(mouseX, mouseY), magDia, in, mag->size() - 1)); }
+				   if (ElectricSandboxPanel->Visible) { mag->push_back(inducMag(dbdt, Vec2D(mouseX, mouseY), magDia, in, mag->size() - 1)); } //simply push back a mag
 				   if (wallGamePanel1->Visible && Magleft > 0) {
 					   mag->push_back(inducMag(dbdt, Vec2D(mouseX, mouseY), magDia, in, mag->size() - 1));
 				   }
@@ -2191,7 +2195,7 @@ namespace CppCLRWinFormsProject {
 					   if (doEField || sandDoEField) EField->updateEfield(*Q, *mag);
 				   }
 				   for (int i = mag->size() - 1; i >= 0; --i) {
-					   if (inCircle((*mag)[i].getX(), (*mag)[i].getY(), (*mag)[i].getRad(), mx, my)) {
+					   if (inCircle((*mag)[i].getX(), (*mag)[i].getY(), (*mag)[i].getRad(), mx, my)) { // if mouse on top of mag
 						   (*mag)[i].inverse();
 					   }
 					   if (doEField || sandDoEField) EField->updateEfield(*Q, *mag);
@@ -2255,12 +2259,12 @@ namespace CppCLRWinFormsProject {
 		   //diffs
 	private: System::Void checkBox2_CheckedChanged(System::Object^ sender, System::EventArgs^ e) { //easy
 		if (checkBox2->Checked) {
-			diff = Diff::easy;
-			level = easyLevel;
-			highScoreUpdate(); // change the high score to relevant dificulty
-			levelUpdate();
 			checkBox3->Checked = false; //only one dificulty at a time
 			checkBox4->Checked = false;
+			diff = Diff::easy;
+			level = easyLevel;
+			levelUpdate();
+			highScoreUpdate(); // change the high score to relevant dificulty
 			applyDifficulty();
 			Walls->generate(gameWidth, gameHeight); //re draw walls when chanigng dificulty
 			doWalls = true;
@@ -2269,12 +2273,13 @@ namespace CppCLRWinFormsProject {
 
 	private: System::Void checkBox3_CheckedChanged(System::Object^ sender, System::EventArgs^ e) { //medium
 		if (checkBox3->Checked) {
-			diff = Diff::medium;
-			level = medLevel;
-			highScoreUpdate();
-			levelUpdate();
 			checkBox2->Checked = false;
 			checkBox4->Checked = false;
+			diff = Diff::medium;
+			level = medLevel;
+			levelUpdate();
+			highScoreUpdate();
+			
 			applyDifficulty();
 			Walls->generate(gameWidth, gameHeight);
 			doWalls = true;
@@ -2282,19 +2287,19 @@ namespace CppCLRWinFormsProject {
 	} //med
 	private: System::Void checkBox4_CheckedChanged(System::Object^ sender, System::EventArgs^ e) { //hard
 		if (checkBox4->Checked) {
-			diff = Diff::hard;
-			level = hardLevel;
-			highScoreUpdate();
-			levelUpdate();
 			checkBox2->Checked = false;
 			checkBox3->Checked = false;
+			diff = Diff::hard;
+			level = hardLevel;
+			levelUpdate();
+			highScoreUpdate();
 			applyDifficulty();
 			Walls->generate(gameWidth, gameHeight);
 			doWalls = true;
 		}
 	}
 	private: System::Void ResetDifficultyB_Click(System::Object^ sender, System::EventArgs^ e) {
-		//reset Charges and mags used(hence left), and the level.
+		//reset Charges and mags used (hence left), and the level.
 		if (diff == Diff::easy) {
 			easyQused = 0;
 			easyPrevQused = 0;
@@ -2326,6 +2331,7 @@ namespace CppCLRWinFormsProject {
 			MagUsed = 0;
 		}
 		levelUpdate();
+		
 		Walls->generate(wallGamePanel1->Width, wallGamePanel1->Height);
 	}
 	private: System::Void ResetCharges_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -2483,25 +2489,25 @@ namespace CppCLRWinFormsProject {
 		if (EFieldLinesCB->Checked == false) {
 			eLine->clear();
 		}
-		//if (doEfieldLines) initialElineGen(*eLine, lineFieldColl, lineFieldRow, lineHspacing, lineVspacing, maxLife, minLength);
+		
 	}
 	private: System::Void SandboxInduceMagB_Click(System::Object^ sender, System::EventArgs^ e) {
 		mode = Mode::induceMag;
 		prevMode = Mode::induceMag;
 	}
 	private: System::Void EFieldLinesGen_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		if ("Random Field" == EFieldLinesGen->SelectedItem->ToString()) {
+		if ("Random Field" == EFieldLinesGen->SelectedItem->ToString()) { // setting relevant life, generation mode, ticks, and lines generated per relevant tick
 			generation = gen::RandomField;
 			maxLife = 100;
 			fieldLgenerated = 3;
-			//doEfieldLines = true;
+			
 		}
 		if ("Grid Generation" == EFieldLinesGen->SelectedItem->ToString()) {
 			generation = gen::GridGen;
 			maxLife = 100;
 			tickCount = 20;
 			maxTick = 50;
-			//doEfieldLines = true;
+		
 		}
 		if ("Random from Charge" == EFieldLinesGen->SelectedItem->ToString()) {
 			generation = gen::RandomCharge;
@@ -2509,7 +2515,7 @@ namespace CppCLRWinFormsProject {
 			tickCount = 0;
 			maxTick = 5;
 			fieldLgenerated = 3;
-			//	doEfieldLines = true;
+			
 		}
 		if ("Radial Generation" == EFieldLinesGen->SelectedItem->ToString()) {
 			generation = gen::RadialGen;
@@ -2517,7 +2523,7 @@ namespace CppCLRWinFormsProject {
 			tickCount = 50;
 			maxTick = 100;
 			fieldLgenerated = 50;
-			//doEfieldLines = true;
+			
 		}
 	}
 	private: System::Void DrawQM_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -2526,6 +2532,7 @@ namespace CppCLRWinFormsProject {
 	private: System::Void TestChargeActivate_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 		activeTestQ = TestChargeActivate->Checked;
 		if (!activeTestQ) {
+
 			sandboxTestCharge->setPos(Vec2D(sandStartX, sandStartY));
 			xs = sandStartX;
 			ys = sandStartY;
@@ -2533,8 +2540,13 @@ namespace CppCLRWinFormsProject {
 			sandboxTestCharge->setVy(0);
 		}
 		if (TestChargeActivate->Checked) { //so that if you activated it mid simulation id starts with v = 0 not with what it acumulated silently
-			//sandboxTestCharge->setVx(0);
-			//sandboxTestCharge->setVy(0);
+			sandStartX = ElectricSandboxPanel->Width - 150 + testD / 2 + 5; // so that if in different screen sizes (computers), it rescales appropiately
+			sandStartY = ElectricSandboxPanel->Height * 0.43 + testD / 2 + 5; //these are the same operations that are in drawSandbox but with a + since Q cords are from its center not the top left corner
+			sandboxTestCharge->setPos(Vec2D(sandStartX, sandStartY));
+			xs = sandStartX;
+			ys = sandStartY;
+			sandboxTestCharge->setVx(0); //so that when reactivated it resets its vel
+			sandboxTestCharge->setVy(0);
 		}
 
 	}
