@@ -443,7 +443,7 @@ namespace CppCLRWinFormsProject {
             }
             else if (text == "Tower Defense") //what happens when the Tower Defense mode is selected. 
             {
-                mode == GameMode::TowerDefense;
+                mode = GameMode::TowerDefense;
             }
             else if (text == "Simulation") // what happens when the sandbox button is clicked
             {
@@ -489,6 +489,16 @@ namespace CppCLRWinFormsProject {
         void OnMouseDown(Object^ sender, MouseEventArgs^ e)
         {
             int idx = HitTestMagnet(e->X, e->Y);
+
+            for each(UIButton ^ b in uiButtons)
+            {
+                if (b->Contains(e->Location))
+                {
+                    b->pressed = true; 
+
+                    return; // Stop the simulation click. 
+                }
+            }
             //Updates the hover state when the mouse is clicked. 
             for each (UIButton ^ b in uiButtons)
             {

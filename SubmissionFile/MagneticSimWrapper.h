@@ -47,6 +47,9 @@ public:
 		{
 			delete sim; //destroys the old sim
 			sim = new MagneticfieldSimulator(); //makes the new one.
+
+			delete tracer; 
+			tracer = new FieldLineTracer(sim); 
 		}
 	}
 
