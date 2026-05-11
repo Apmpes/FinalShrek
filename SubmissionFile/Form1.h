@@ -67,7 +67,7 @@ namespace CppCLRWinFormsProject {
 
             this->lblTitle->Dock = System::Windows::Forms::DockStyle::Top;
             this->lblTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 26, System::Drawing::FontStyle::Bold));
-            this->lblTitle->ForeColor = System::Drawing::Color::FromArgb(0, 210, 190);
+            this->lblTitle->ForeColor = System::Drawing::Color::FromArgb(239, 159, 39);
             this->lblTitle->Location = System::Drawing::Point(0, 0);
             this->lblTitle->Name = L"lblTitle";
             this->lblTitle->Padding = System::Windows::Forms::Padding(20, 20, 0, 0);
@@ -97,7 +97,7 @@ namespace CppCLRWinFormsProject {
             this->btnPanel->TabIndex = 2;
             this->btnPanel->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Form1::btnPanel_Paint);
 
-            this->btnANB_GraphingSim->BackColor = System::Drawing::Color::FromArgb(0, 140, 200);
+            this->btnANB_GraphingSim->BackColor = System::Drawing::Color::FromArgb(186, 117, 23);
             this->btnANB_GraphingSim->Cursor = System::Windows::Forms::Cursors::Hand;
             this->btnANB_GraphingSim->Dock = System::Windows::Forms::DockStyle::Fill;
             this->btnANB_GraphingSim->FlatAppearance->BorderSize = 0;
@@ -112,7 +112,7 @@ namespace CppCLRWinFormsProject {
             this->btnANB_GraphingSim->UseVisualStyleBackColor = false;
             this->btnANB_GraphingSim->Click += gcnew System::EventHandler(this, &Form1::btnANB_GraphingSim_Click);
 
-            this->btnAPM_ElectromagSim->BackColor = System::Drawing::Color::FromArgb(160, 60, 200);
+            this->btnAPM_ElectromagSim->BackColor = System::Drawing::Color::FromArgb(216, 90, 48);
             this->btnAPM_ElectromagSim->Cursor = System::Windows::Forms::Cursors::Hand;
             this->btnAPM_ElectromagSim->Dock = System::Windows::Forms::DockStyle::Fill;
             this->btnAPM_ElectromagSim->FlatAppearance->BorderSize = 0;
@@ -127,7 +127,7 @@ namespace CppCLRWinFormsProject {
             this->btnAPM_ElectromagSim->UseVisualStyleBackColor = false;
             this->btnAPM_ElectromagSim->Click += gcnew System::EventHandler(this, &Form1::btnAPM_ElectromagSim_Click);
 
-            this->btnUH_MagneticSim->BackColor = System::Drawing::Color::FromArgb(0, 180, 120);
+            this->btnUH_MagneticSim->BackColor = System::Drawing::Color::FromArgb(99, 153, 34);
             this->btnUH_MagneticSim->Cursor = System::Windows::Forms::Cursors::Hand;
             this->btnUH_MagneticSim->Dock = System::Windows::Forms::DockStyle::Fill;
             this->btnUH_MagneticSim->FlatAppearance->BorderSize = 0;
@@ -142,30 +142,30 @@ namespace CppCLRWinFormsProject {
             this->btnUH_MagneticSim->UseVisualStyleBackColor = false;
             this->btnUH_MagneticSim->Click += gcnew System::EventHandler(this, &Form1::btnUH_MagneticSim_Click);
 
-            this->blDescriptionANB->BackColor = System::Drawing::Color::FromArgb(0, 30, 50);
+            this->blDescriptionANB->BackColor = System::Drawing::Color::FromArgb(37, 24, 8);
             this->blDescriptionANB->Dock = System::Windows::Forms::DockStyle::Fill;
             this->blDescriptionANB->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
-            this->blDescriptionANB->ForeColor = System::Drawing::Color::FromArgb(0, 140, 200);
+            this->blDescriptionANB->ForeColor = System::Drawing::Color::FromArgb(186, 117, 23);
             this->blDescriptionANB->Margin = System::Windows::Forms::Padding(10, 8, 10, 10);
             this->blDescriptionANB->Name = L"blDescriptionANB";
             this->blDescriptionANB->TabIndex = 6;
-            this->blDescriptionANB->Text = L"Enter your description\nof the graphing simulator here.";
+            this->blDescriptionANB->Text = L"Creates graphs for 4 physical situations including circuits:\n\n1 - An RLC circuit, containing a resistor, an inductor, and a capacitor.\n2 - An RC circuit, containing just a resistor and capacitor.\n3 - An Electromagnetic Wave Simulator.\n4 - A Fourier Series Visualiser.\n\nBoth of the circuits sims take input values of the components used so that experimental results can be compared against them.\nThe Electromagnetic Wave Visualiser takes input values of the Amplitude, Frequency, Attenutation, and Wave offset.\nThe Fourier Series visualisor can add 0-50 harmonics and 0-10 wavefronts.";
             this->blDescriptionANB->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 
-            this->blDescriptionAPM->BackColor = System::Drawing::Color::FromArgb(30, 10, 50);
+            this->blDescriptionAPM->BackColor = System::Drawing::Color::FromArgb(40, 20, 8);
             this->blDescriptionAPM->Dock = System::Windows::Forms::DockStyle::Fill;
             this->blDescriptionAPM->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
-            this->blDescriptionAPM->ForeColor = System::Drawing::Color::FromArgb(160, 60, 200);
+            this->blDescriptionAPM->ForeColor = System::Drawing::Color::FromArgb(216, 90, 48);
             this->blDescriptionAPM->Margin = System::Windows::Forms::Padding(10, 8, 10, 10);
             this->blDescriptionAPM->Name = L"blDescriptionAPM";
             this->blDescriptionAPM->TabIndex = 7;
             this->blDescriptionAPM->Text = L"Enter your description\nof the electromagnetism simulator here.";
             this->blDescriptionAPM->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 
-            this->blDescriptionUH->BackColor = System::Drawing::Color::FromArgb(0, 30, 20);
+            this->blDescriptionUH->BackColor = System::Drawing::Color::FromArgb(18, 25, 8);
             this->blDescriptionUH->Dock = System::Windows::Forms::DockStyle::Fill;
             this->blDescriptionUH->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10));
-            this->blDescriptionUH->ForeColor = System::Drawing::Color::FromArgb(0, 180, 120);
+            this->blDescriptionUH->ForeColor = System::Drawing::Color::FromArgb(99, 153, 34);
             this->blDescriptionUH->Margin = System::Windows::Forms::Padding(10, 8, 10, 10);
             this->blDescriptionUH->Name = L"blDescriptionUH";
             this->blDescriptionUH->TabIndex = 8;
@@ -178,12 +178,10 @@ namespace CppCLRWinFormsProject {
             this->HelpPagePanel->Controls->Add(this->FreqQuestText);
             this->HelpPagePanel->Controls->Add(this->FreqQuestTitle);
             this->HelpPagePanel->Controls->Add(this->HelpPageTitle);
-            this->HelpPagePanel->BackColor = System::Drawing::Color::FromArgb(28, 28, 45);
+            this->HelpPagePanel->BackColor = System::Drawing::Color::FromArgb(20, 16, 6);
             this->HelpPagePanel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
                 System::Windows::Forms::AnchorStyles::Top |
-                System::Windows::Forms::AnchorStyles::Right
-                );
-          
+                System::Windows::Forms::AnchorStyles::Right);
             this->HelpPagePanel->Location = System::Drawing::Point(690, 0);
             this->HelpPagePanel->Size = System::Drawing::Size(312, 572);
             this->HelpPagePanel->Width = 312;
@@ -194,7 +192,7 @@ namespace CppCLRWinFormsProject {
             this->ExitHelpPage->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
                 System::Windows::Forms::AnchorStyles::Top |
                 System::Windows::Forms::AnchorStyles::Right);
-            this->ExitHelpPage->BackColor = System::Drawing::Color::FromArgb(255, 80, 80);
+            this->ExitHelpPage->BackColor = System::Drawing::Color::FromArgb(216, 90, 48);
             this->ExitHelpPage->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
             this->ExitHelpPage->FlatAppearance->BorderSize = 0;
             this->ExitHelpPage->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Bold));
@@ -209,7 +207,7 @@ namespace CppCLRWinFormsProject {
 
             this->HelpPageTitle->AutoSize = true;
             this->HelpPageTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold));
-            this->HelpPageTitle->ForeColor = System::Drawing::Color::White;
+            this->HelpPageTitle->ForeColor = System::Drawing::Color::FromArgb(239, 159, 39);
             this->HelpPageTitle->Location = System::Drawing::Point(20, 28);
             this->HelpPageTitle->Name = L"HelpPageTitle";
             this->HelpPageTitle->TabIndex = 0;
@@ -217,7 +215,7 @@ namespace CppCLRWinFormsProject {
 
             this->FreqQuestTitle->AutoSize = true;
             this->FreqQuestTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
-            this->FreqQuestTitle->ForeColor = System::Drawing::Color::White;
+            this->FreqQuestTitle->ForeColor = System::Drawing::Color::FromArgb(186, 117, 23);
             this->FreqQuestTitle->Location = System::Drawing::Point(20, 82);
             this->FreqQuestTitle->Name = L"FreqQuestTitle";
             this->FreqQuestTitle->TabIndex = 1;
@@ -225,7 +223,7 @@ namespace CppCLRWinFormsProject {
 
             this->FreqQuestText->AutoSize = true;
             this->FreqQuestText->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F));
-            this->FreqQuestText->ForeColor = System::Drawing::Color::FromArgb(200, 200, 200);
+            this->FreqQuestText->ForeColor = System::Drawing::Color::FromArgb(200, 180, 150);
             this->FreqQuestText->Location = System::Drawing::Point(20, 120);
             this->FreqQuestText->Name = L"FreqQuestText";
             this->FreqQuestText->TabIndex = 2;
@@ -238,7 +236,7 @@ namespace CppCLRWinFormsProject {
 
             this->ContactTitle->AutoSize = true;
             this->ContactTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold));
-            this->ContactTitle->ForeColor = System::Drawing::Color::White;
+            this->ContactTitle->ForeColor = System::Drawing::Color::FromArgb(186, 117, 23);
             this->ContactTitle->Location = System::Drawing::Point(20, 289);
             this->ContactTitle->Name = L"ContactTitle";
             this->ContactTitle->TabIndex = 3;
@@ -246,7 +244,7 @@ namespace CppCLRWinFormsProject {
 
             this->ContactTxt->AutoSize = true;
             this->ContactTxt->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F));
-            this->ContactTxt->ForeColor = System::Drawing::Color::FromArgb(200, 200, 200);
+            this->ContactTxt->ForeColor = System::Drawing::Color::FromArgb(200, 180, 150);
             this->ContactTxt->Location = System::Drawing::Point(20, 330);
             this->ContactTxt->Name = L"ContactTxt";
             this->ContactTxt->TabIndex = 4;
@@ -256,16 +254,17 @@ namespace CppCLRWinFormsProject {
                 L"Add your contact details here.\n\n"
                 L"Alex Naylor: Graphing Simulator\nA.Naylor-Beggs1-25@student.lboro.ac.uk\n\n"
                 L"Andres Perez: Electromagnetism Simulator\nA.Perez-Maillard1-24@student.lboro.ac.uk\n\n"
-                L"Uzair Hafesji: Magnetism Simulator \nU.Hafesji1-25@student.lboro.ac.uk";
+                L"Uzair Hafesji: Magnetism Simulator\nU.Hafesji1-25@student.lboro.ac.uk";
 
             this->EnterHelpPage->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
                 System::Windows::Forms::AnchorStyles::Top |
                 System::Windows::Forms::AnchorStyles::Right);
-            this->EnterHelpPage->BackColor = System::Drawing::Color::DarkGray;
+            this->EnterHelpPage->BackColor = System::Drawing::Color::FromArgb(37, 24, 8);
+            this->EnterHelpPage->ForeColor = System::Drawing::Color::FromArgb(239, 159, 39);
             this->EnterHelpPage->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Bold));
-            this->EnterHelpPage->Location = System::Drawing::Point(915, 13);
+            this->EnterHelpPage->Location = System::Drawing::Point(880, 13);
             this->EnterHelpPage->Name = L"EnterHelpPage";
-            this->EnterHelpPage->Size = System::Drawing::Size(75, 23);
+            this->EnterHelpPage->Size = System::Drawing::Size(100, 40);
             this->EnterHelpPage->TabIndex = 4;
             this->EnterHelpPage->TabStop = false;
             this->EnterHelpPage->Text = L"Help";
@@ -274,7 +273,7 @@ namespace CppCLRWinFormsProject {
 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->BackColor = System::Drawing::Color::FromArgb(18, 18, 30);
+            this->BackColor = System::Drawing::Color::FromArgb(26, 20, 8);
             this->ClientSize = System::Drawing::Size(1002, 572);
             this->Controls->Add(this->EnterHelpPage);
             this->Controls->Add(this->HelpPagePanel);
@@ -313,4 +312,3 @@ namespace CppCLRWinFormsProject {
         }
     };
 }
-

@@ -41,6 +41,9 @@ namespace CppCLRWinFormsProject {
 #pragma region Windows Form Designer generated code
 		void InitializeComponent(void)
 		{
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+
+
 			this->components = (gcnew System::ComponentModel::Container());
 			this->ResistanceLabel = (gcnew System::Windows::Forms::Label());
 			this->InductanceLabel = (gcnew System::Windows::Forms::Label());

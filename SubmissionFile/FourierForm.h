@@ -50,6 +50,8 @@ namespace CppCLRWinFormsProject {
 #pragma region
 		void InitializeComponent(void)
 		{
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
+
 			this->components = (gcnew System::ComponentModel::Container());
 			this->lblTitle = (gcnew System::Windows::Forms::Label());
 			this->lblFormula = (gcnew System::Windows::Forms::Label());
