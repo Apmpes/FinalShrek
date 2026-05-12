@@ -1684,9 +1684,9 @@ private: System::Windows::Forms::Button^ RewatchB;
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)));
-			System::String^ imagePath =	System::IO::Path::Combine(System::Windows::Forms::Application::StartupPath,	"Assets\\ElectricSandboxPP.png");
+		//	System::String^ imagePath =	System::IO::Path::Combine(System::Windows::Forms::Application::StartupPath,	"Assets\\ElectricSandboxPP.png");
 
-			this->homePanel->BackgroundImage =System::Drawing::Image::FromFile(imagePath);
+		//	this->homePanel->BackgroundImage =System::Drawing::Image::FromFile(imagePath);
 
 			this->homePanel->BackgroundImageLayout =
 				System::Windows::Forms::ImageLayout::Stretch;

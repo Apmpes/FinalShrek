@@ -1,0 +1,4 @@
+#include "resource.h"
+#include "winres.h"
+
+IDB_ELECTRIC_SANDBOX_PNG RCDATA "Assets\\ElectricSandboxPP.png"

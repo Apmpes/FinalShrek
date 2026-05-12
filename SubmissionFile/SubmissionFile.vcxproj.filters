@@ -124,7 +124,7 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Assets\ElectricSandboxPP.png">
-      <Filter>Resource Files</Filter>
+      <Filter>Source Files</Filter>
     </Image>
   </ItemGroup>
 </Project>
