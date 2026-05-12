@@ -810,7 +810,7 @@ private: System::Windows::Forms::Button^ RewatchB;
 			this->RewatchB->Name = L"RewatchB";
 			this->RewatchB->Size = System::Drawing::Size(75, 44);
 			this->RewatchB->TabIndex = 0;
-			this->RewatchB->Text = L"Rewatch";
+			this->RewatchB->Text = L"Replay";
 			this->RewatchB->UseVisualStyleBackColor = false;
 			this->RewatchB->Click += gcnew System::EventHandler(this, &FormAPMFinal::RewatchB_Click);
 			// 
@@ -1335,11 +1335,11 @@ private: System::Windows::Forms::Button^ RewatchB;
 			this->HideAndShowCB->AutoSize = true;
 			this->HideAndShowCB->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 8.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->HideAndShowCB->Location = System::Drawing::Point(1700, 10);
+			this->HideAndShowCB->Location = System::Drawing::Point(1610, 660);
 			this->HideAndShowCB->Name = L"HideAndShowCB";
 			this->HideAndShowCB->Size = System::Drawing::Size(124, 18);
 			this->HideAndShowCB->TabIndex = 23;
-			this->HideAndShowCB->Text = L"HIDE CONTROLS";
+			this->HideAndShowCB->Text = L"Hide Controls";
 			this->HideAndShowCB->UseVisualStyleBackColor = true;
 			this->HideAndShowCB->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::HideAndShowCB_CheckedChanged);
 			// 
@@ -1584,7 +1584,7 @@ private: System::Windows::Forms::Button^ RewatchB;
 			this->SandboxInspectCB->AutoSize = true;
 			this->SandboxInspectCB->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->SandboxInspectCB->Location = System::Drawing::Point(1627, 497);
+			this->SandboxInspectCB->Location = System::Drawing::Point(1624, 497);
 			this->SandboxInspectCB->Name = L"SandboxInspectCB";
 			this->SandboxInspectCB->Size = System::Drawing::Size(77, 19);
 			this->SandboxInspectCB->TabIndex = 6;
