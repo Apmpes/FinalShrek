@@ -46,20 +46,13 @@ namespace CppCLRWinFormsProject {
 					System::Reflection::BindingFlags::NonPublic);
 			p2->SetValue(ElectricSandboxPanel, true, nullptr);
 
-			//screenWidth = this->ClientSize.Width; //set width and height of screen
-			//screenHeight = this->ClientSize.Height;
 			screenWidth = ElectricSandboxPanel->Width;
 			screenHeight = ElectricSandboxPanel->Height;
 
 			gameWidth = wallGamePanel1->Width; //set width and height of game panel
 			gameHeight = wallGamePanel1->Height;
 
-			/*
-			this->MouseClick += gcnew MouseEventHandler(this, &FormAPMFinal::MClick); //to access mouse coords when click
-			this->MouseMove += gcnew MouseEventHandler(this, &FormAPMFinal::OnMouseMove); //To access mouse cords at all times
-			this->MouseUp += gcnew MouseEventHandler(this, &FormAPMFinal::Mup); //For dragging (when clicking)
-			this->MouseDown += gcnew MouseEventHandler(this, &FormAPMFinal::Mdown); //For dragging (when releasing)
-			*/
+
 			wallGamePanel1->MouseClick += gcnew MouseEventHandler(this, &FormAPMFinal::MClick);
 			wallGamePanel1->MouseDown += gcnew MouseEventHandler(this, &FormAPMFinal::Mdown);
 			wallGamePanel1->MouseUp += gcnew MouseEventHandler(this, &FormAPMFinal::Mup);
