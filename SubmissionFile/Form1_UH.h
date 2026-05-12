@@ -5,7 +5,14 @@
 #include "GameMode.h"
 #include "TowerDefenseMode.h"
 #include "UIButtons.h"
+/*
+This section contains two simulations: Electromag Run Game and Electric Sandbox.
 
+The Electromag Run Game consists of creating an electric field by placing charges and inducing changing magnetic fields to guide your test charge to the end goal, avoiding collisions. There are many tools to help you achieve your goal, like visualizing the Vector Field.
+
+In the Electric Sandbox you can explore the properties of the electric field and gain intuitive understanding through various means. You can perform calculations to investigate the field, draw vector arrows, simulate charges, visualize the flow of the field through colorful lines, and more!
+
+*/
 namespace CppCLRWinFormsProject {
 
     using namespace System;
