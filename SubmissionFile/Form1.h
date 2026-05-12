@@ -169,7 +169,15 @@ namespace CppCLRWinFormsProject {
             this->blDescriptionUH->Margin = System::Windows::Forms::Padding(10, 8, 10, 10);
             this->blDescriptionUH->Name = L"blDescriptionUH";
             this->blDescriptionUH->TabIndex = 8;
-            this->blDescriptionUH->Text = L"Enter your description\nof the magnetic simulator here.";
+            this->blDescriptionUH->Text =
+                L"This Simulates bar magnets and displays their Magnetic fields. \n"
+                L"There are 2 modes: \t Simulation \t Tower Defense Mode \n"
+                L"--------------Simulation Mode----------------\n"
+                L"In simulation mode you can freely use the magnets and see how their fields interact.\n"
+                L"------------Tower defense Mode--------------\n "
+                L"In this mode there is a center which you have to protect from particles.\n using the bar magnets magnetic fields you can influence the particles paths\n"
+                L"--------------------Controls--------------------\n"
+                L"L-click : place magnet \n double click : flip polarity \n L-click + del : to delete a magnet \n R-click + move mouse : rotate the magnets\n";
             this->blDescriptionUH->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 
             this->HelpPagePanel->Controls->Add(this->ExitHelpPage);
