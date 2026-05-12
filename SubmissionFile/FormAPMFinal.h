@@ -31,7 +31,7 @@ namespace CppCLRWinFormsProject {
 			//TODO: Add the constructor code here
 			//
 			//panel
-
+			this->TopMost = false;
 			wallGamePanel1->Visible = false;
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized; //opens full screen
 			ElectricSandboxPanel->Resize += gcnew System::EventHandler(this, &FormAPMFinal::PositionButtons); //so home screen buttons are centered
@@ -137,7 +137,8 @@ namespace CppCLRWinFormsProject {
 			Cover->Anchor =static_cast<System::Windows::Forms::AnchorStyles>(System::Windows::Forms::AnchorStyles::Top |System::Windows::Forms::AnchorStyles::Right);
 			homePanel->Controls->Add(Cover);
 
-			Cover->BringToFront();
+			Cover->BringToFront(); //just to cover sa part of the image
+			
 		}
 	private: System::Windows::Forms::Timer^ timer;
 
@@ -670,6 +671,7 @@ private: System::Windows::Forms::Button^ RewatchB;
 			this->TempGoal->Text = L"Temporary Goal";
 			this->TempGoal->UseVisualStyleBackColor = false;
 			this->TempGoal->Click += gcnew System::EventHandler(this, &FormAPMFinal::TempGoal_Click);
+			this->TempGoal->Visible = false;
 			// 
 			// EVectorField
 			// 
@@ -683,6 +685,7 @@ private: System::Windows::Forms::Button^ RewatchB;
 			this->EVectorField->Text = L"Vector Field";
 			this->EVectorField->UseVisualStyleBackColor = true;
 			this->EVectorField->CheckedChanged += gcnew System::EventHandler(this, &FormAPMFinal::EVectorField_CheckedChanged);
+			
 			// 
 			// ReversePolarity
 			// 
@@ -1436,7 +1439,7 @@ private: System::Windows::Forms::Button^ RewatchB;
 			this->InspectLable->ForeColor = System::Drawing::Color::Black;
 			this->InspectLable->Location = System::Drawing::Point(1360, 448);
 			this->InspectLable->Name = L"InspectLable";
-			this->InspectLable->Size = System::Drawing::Size(202, 190);
+			this->InspectLable->Size = System::Drawing::Size(225, 230);
 			this->InspectLable->TabIndex = 16;
 			this->InspectLable->Text = L"Inspect Lable";
 			this->InspectLable->Visible = false;
@@ -1748,7 +1751,8 @@ private: System::Windows::Forms::Button^ RewatchB;
 		}
 		void inspectLable() {
 			Vec2D gradMag = toMathCoords(computeGradMag(*Q, *mag, xs, ys));
-			InspectLable->Text = "Position = (" + sandboxTestCharge->getX().ToString() + ", " + switchCoords(sandboxTestCharge->getY(), ElectricSandboxPanel->Height).ToString() + ")\n\n" +
+			InspectLable->Text = "All quantities are 10^-4 smaller than SI values\n\n"+
+				"Position = (" + sandboxTestCharge->getX().ToString() + ", " + switchCoords(sandboxTestCharge->getY(), ElectricSandboxPanel->Height).ToString() + ")\n\n" +
 				"Electric Field Magnitude = " + (Emag(totEat(*Q, *mag, xs, ys)) * 5).ToString("F2") + "\n" +
 				"Force Experienced= " + testQF(*sandboxTestCharge, *Q, *mag, sandboxTestCharge->getX(), sandboxTestCharge->getY()).ToString("F2") + "\n" +
 				"Direction of E and F = " + EdirInDeg(toMathCoords(totEat(*Q, *mag, xs, ys))).ToString("F2") + "° \n\n" +
