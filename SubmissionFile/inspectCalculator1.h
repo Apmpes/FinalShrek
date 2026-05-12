@@ -27,7 +27,7 @@ double computeCurl(vector<Charge>& Q, vector<inducMag>& mag, float x, float y) {
     Vec2D Ey1 = toMathCoords(displayedTotEat(Q, mag, x, y + h));
     Vec2D Ey2 = toMathCoords(displayedTotEat(Q, mag, x, y - h));
 
-    double dEy_dx = (Ex1.getY() - Ex2.getY()) / (2 * h);//also inverted
+    double dEy_dx = -(Ex1.getY() - Ex2.getY()) / (2 * h);//also inverted
     double dEx_dy = (Ey1.getX() - Ey2.getX()) / (2 * h);
 
     return dEy_dx - dEx_dy;

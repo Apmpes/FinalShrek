@@ -1751,7 +1751,7 @@ private: System::Windows::Forms::Button^ RewatchB;
 		}
 		void inspectLable() {
 			Vec2D gradMag = toMathCoords(computeGradMag(*Q, *mag, xs, ys));
-			InspectLable->Text = "All quantities are 10^-4 smaller than SI values\n\n"+
+			InspectLable->Text = "All non-angle quantities are 10^-4 smaller than SI values\n\n"+
 				"Position = (" + sandboxTestCharge->getX().ToString() + ", " + switchCoords(sandboxTestCharge->getY(), ElectricSandboxPanel->Height).ToString() + ")\n\n" +
 				"Electric Field Magnitude = " + (Emag(totEat(*Q, *mag, xs, ys)) * 5).ToString("F2") + "\n" +
 				"Force Experienced= " + testQF(*sandboxTestCharge, *Q, *mag, sandboxTestCharge->getX(), sandboxTestCharge->getY()).ToString("F2") + "\n" +
