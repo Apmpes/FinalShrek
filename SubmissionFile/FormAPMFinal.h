@@ -33,7 +33,9 @@ namespace CppCLRWinFormsProject {
 			//panel
 
 			wallGamePanel1->Visible = false;
-
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized; //opens full screen
+			ElectricSandboxPanel->Resize += gcnew System::EventHandler(this, &FormAPMFinal::PositionButtons); //so home screen buttons are centered
+			PositionButtons(nullptr, nullptr);
 			System::Reflection::PropertyInfo^ p1 =
 				wallGamePanel1->GetType()->GetProperty("DoubleBuffered", //otherwise it was flickering, double buffering apparently is not acessible easily, had to do this
 					System::Reflection::BindingFlags::Instance |
@@ -402,7 +404,12 @@ namespace CppCLRWinFormsProject {
 	private: System::Windows::Forms::TextBox^ TestQYPosTextbox;
 	private: System::Windows::Forms::TextBox^ TestQXPosTextbox;
 	private: System::Windows::Forms::Button^ TesQXB;
-
+	 private: System::Windows::Forms::Panel^ WonGamePanel;
+private: System::Windows::Forms::Label^ NextLvlExplainLable;
+private: System::Windows::Forms::Label^ WellDoneLable;
+private: System::Windows::Forms::Button^ NextLevelB;
+private: System::Windows::Forms::Button^ RewatchB;
+	   private: System::Windows::Forms::Label^ ElectricSimTitle;
 		   System::Windows::Forms::Panel^ Cover;
 
 
@@ -452,6 +459,11 @@ namespace CppCLRWinFormsProject {
 			this->ReversePolarity = (gcnew System::Windows::Forms::Button());
 			this->ResetLevel = (gcnew System::Windows::Forms::Button());
 			this->wallGamePanel1 = (gcnew System::Windows::Forms::Panel());
+			this->WonGamePanel = (gcnew System::Windows::Forms::Panel());
+			this->NextLvlExplainLable = (gcnew System::Windows::Forms::Label());
+			this->WellDoneLable = (gcnew System::Windows::Forms::Label());
+			this->NextLevelB = (gcnew System::Windows::Forms::Button());
+			this->RewatchB = (gcnew System::Windows::Forms::Button());
 			this->ResetDifficultyB = (gcnew System::Windows::Forms::Button());
 			this->MagnetsLeftLable = (gcnew System::Windows::Forms::Label());
 			this->GameInducMagB = (gcnew System::Windows::Forms::Button());
@@ -464,6 +476,7 @@ namespace CppCLRWinFormsProject {
 			this->homePanel = (gcnew System::Windows::Forms::Panel());
 			this->ElectricSandbox = (gcnew System::Windows::Forms::Button());
 			this->ElectricSandboxPanel = (gcnew System::Windows::Forms::Panel());
+			this->ElectricSimTitle = (gcnew System::Windows::Forms::Label());
 			this->EditTestChargePanel = (gcnew System::Windows::Forms::Panel());
 			this->TesQXB = (gcnew System::Windows::Forms::Button());
 			this->ApplyPosTestQB = (gcnew System::Windows::Forms::Button());
@@ -693,12 +706,13 @@ namespace CppCLRWinFormsProject {
 			this->ResetLevel->Name = L"ResetLevel";
 			this->ResetLevel->Size = System::Drawing::Size(82, 52);
 			this->ResetLevel->TabIndex = 13;
-			this->ResetLevel->Text = L"Reset Level";
+			this->ResetLevel->Text = L"Reset";
 			this->ResetLevel->UseVisualStyleBackColor = false;
 			this->ResetLevel->Click += gcnew System::EventHandler(this, &FormAPMFinal::ResetLevel_Click);
 			// 
 			// wallGamePanel1
 			// 
+			this->wallGamePanel1->Controls->Add(this->WonGamePanel);
 			this->wallGamePanel1->Controls->Add(this->ResetDifficultyB);
 			this->wallGamePanel1->Controls->Add(this->MagnetsLeftLable);
 			this->wallGamePanel1->Controls->Add(this->GameInducMagB);
@@ -728,6 +742,71 @@ namespace CppCLRWinFormsProject {
 			this->wallGamePanel1->TabIndex = 14;
 			this->wallGamePanel1->Visible = false;
 			this->wallGamePanel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FormAPMFinal::wallGamePanel1_Paint);
+			// 
+		// WonGamePanel
+		// 
+			this->WonGamePanel->BackColor = System::Drawing::Color::Linen;
+			this->WonGamePanel->Controls->Add(this->NextLvlExplainLable);
+			this->WonGamePanel->Controls->Add(this->WellDoneLable);
+			this->WonGamePanel->Controls->Add(this->NextLevelB);
+			this->WonGamePanel->Controls->Add(this->RewatchB);
+			this->WonGamePanel->Location = System::Drawing::Point(931, 347);
+			this->WonGamePanel->Name = L"WonGamePanel";
+			this->WonGamePanel->Size = System::Drawing::Size(287, 154);
+			this->WonGamePanel->TabIndex = 22;
+			this->WonGamePanel->Visible = false;
+			// 
+			// NextLvlExplainLable
+			// 
+			this->NextLvlExplainLable->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->NextLvlExplainLable->ForeColor = System::Drawing::Color::Black;
+			this->NextLvlExplainLable->Location = System::Drawing::Point(18, 47);
+			this->NextLvlExplainLable->Name = L"NextLvlExplainLable";
+			this->NextLvlExplainLable->Size = System::Drawing::Size(248, 49);
+			this->NextLvlExplainLable->TabIndex = 3;
+			this->NextLvlExplainLable->Text = L"You have reached the goal. Do you want to go rewatch your master play or go to th"
+				L"e next level\?";
+			// 
+			// WellDoneLable
+			// 
+			this->WellDoneLable->AutoSize = true;
+			this->WellDoneLable->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->WellDoneLable->ForeColor = System::Drawing::Color::Black;
+			this->WellDoneLable->Location = System::Drawing::Point(65, 10);
+			this->WellDoneLable->Name = L"WellDoneLable";
+			this->WellDoneLable->Size = System::Drawing::Size(169, 32);
+			this->WellDoneLable->TabIndex = 2;
+			this->WellDoneLable->Text = L"Well Done!";
+			// 
+			// NextLevelB
+			// 
+			this->NextLevelB->BackColor = System::Drawing::Color::Ivory;
+			this->NextLevelB->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->NextLevelB->ForeColor = System::Drawing::Color::Black;
+			this->NextLevelB->Location = System::Drawing::Point(173, 99);
+			this->NextLevelB->Name = L"NextLevelB";
+			this->NextLevelB->Size = System::Drawing::Size(75, 46);
+			this->NextLevelB->TabIndex = 1;
+			this->NextLevelB->Text = L"Next Level";
+			this->NextLevelB->UseVisualStyleBackColor = false;
+			this->NextLevelB->Click += gcnew System::EventHandler(this, &FormAPMFinal::NextLevelB_Click);
+			// 
+		// RewatchB
+		// 
+			this->RewatchB->BackColor = System::Drawing::Color::Ivory;
+			this->RewatchB->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->RewatchB->ForeColor = System::Drawing::Color::Black;
+			this->RewatchB->Location = System::Drawing::Point(38, 101);
+			this->RewatchB->Name = L"RewatchB";
+			this->RewatchB->Size = System::Drawing::Size(75, 44);
+			this->RewatchB->TabIndex = 0;
+			this->RewatchB->Text = L"Rewatch";
+			this->RewatchB->UseVisualStyleBackColor = false;
+			this->RewatchB->Click += gcnew System::EventHandler(this, &FormAPMFinal::RewatchB_Click);
 			// 
 			// ResetDifficultyB
 			// 
@@ -835,7 +914,7 @@ namespace CppCLRWinFormsProject {
 			this->playWallGame->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->playWallGame->ForeColor = System::Drawing::Color::LightGray;
-			this->playWallGame->Location = System::Drawing::Point(670, 465);
+			this->playWallGame->Location = System::Drawing::Point(650, 465);
 			this->playWallGame->Name = L"playWallGame";
 			this->playWallGame->Size = System::Drawing::Size(163, 126);
 			this->playWallGame->TabIndex = 15;
@@ -849,11 +928,24 @@ namespace CppCLRWinFormsProject {
 				static_cast<System::Int32>(static_cast<System::Byte>(30)));
 			this->homePanel->Controls->Add(this->ElectricSandbox);
 			this->homePanel->Controls->Add(this->playWallGame);
+			this->homePanel->Controls->Add(this->ElectricSimTitle);
 			this->homePanel->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->homePanel->Location = System::Drawing::Point(0, 0);
 			this->homePanel->Name = L"homePanel";
 			this->homePanel->Size = System::Drawing::Size(1836, 1000);
 			this->homePanel->TabIndex = 16;
+			// 
+			// ElectricSimTitle
+			// 
+			this->ElectricSimTitle->AutoSize = true;
+			this->ElectricSimTitle->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 27.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->ElectricSimTitle->ForeColor = System::Drawing::SystemColors::Control;
+			this->ElectricSimTitle->Location = System::Drawing::Point(this->ClientSize.Width/2, 88);
+			this->ElectricSimTitle->Name = L"ElectricSimTitle";
+			this->ElectricSimTitle->Size = System::Drawing::Size(573, 43);
+			this->ElectricSimTitle->TabIndex = 22;
+			this->ElectricSimTitle->Text = L"Electromagnetism Simulator";
 			// 
 			// ElectricSandbox
 			// 
@@ -861,7 +953,7 @@ namespace CppCLRWinFormsProject {
 			this->ElectricSandbox->Font = (gcnew System::Drawing::Font(L"Lucida Fax", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ElectricSandbox->ForeColor = System::Drawing::Color::LightGray;
-			this->ElectricSandbox->Location = System::Drawing::Point(1026, 465);
+			this->ElectricSandbox->Location = System::Drawing::Point(this->ClientSize.Width/2, 465);
 			this->ElectricSandbox->Name = L"ElectricSandbox";
 			this->ElectricSandbox->Size = System::Drawing::Size(177, 126);
 			this->ElectricSandbox->TabIndex = 16;
@@ -1586,9 +1678,12 @@ namespace CppCLRWinFormsProject {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(30)));
-			this->homePanel->BackgroundImage =
-				System::Drawing::Image::FromFile("Assets/ElectricSandboxPP.png");
+			System::String^ imagePath =	System::IO::Path::Combine(System::Windows::Forms::Application::StartupPath,	"Assets\\ElectricSandboxPP.png");
 
+			this->homePanel->BackgroundImage =System::Drawing::Image::FromFile(imagePath);
+
+			this->homePanel->BackgroundImageLayout =
+				System::Windows::Forms::ImageLayout::Stretch;
 			this->homePanel->BackgroundImageLayout =
 				System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1836, 1000);
@@ -1601,6 +1696,7 @@ namespace CppCLRWinFormsProject {
 			this->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &FormAPMFinal::FormAPMFinal_Paint);
 			this->wallGamePanel1->ResumeLayout(false);
 			this->wallGamePanel1->PerformLayout();
+			this->WonGamePanel->ResumeLayout(false);
 			this->homePanel->ResumeLayout(false);
 			this->ElectricSandboxPanel->ResumeLayout(false);
 			this->ElectricSandboxPanel->PerformLayout();
@@ -1615,8 +1711,14 @@ namespace CppCLRWinFormsProject {
 			this->ResumeLayout(false);
 
 		}
+	
 #pragma endregion
-
+			private: System::Void PositionButtons(System::Object^ sender, System::EventArgs^ e) {
+				int panelW = ElectricSandboxPanel->ClientSize.Width;
+				playWallGame->Location = System::Drawing::Point((int)(panelW * 0.42) - playWallGame->Width / 2, 465);
+				ElectricSandbox->Location = System::Drawing::Point((int)(panelW * 0.58),	465	);
+				ElectricSimTitle->Location = System::Drawing::Point((int)(panelW * 0.37), 43);
+			}
 		void ChargesUsed() {
 			// // the prevQUsed is so that when you move to next level you still used those	
 			if (diff == Diff::easy) { easyQused = easyPrevQused + Q->size(); QUsed = easyQused; }
@@ -1669,8 +1771,6 @@ namespace CppCLRWinFormsProject {
 		}
 		void restartLevel() { //reset all relevant variables and stop simulation
 			checkBox1->Checked = false;
-			deleteQ();
-			deleteMag(*mag);
 			x = startX;
 			y = startY;
 			testCharge->setPos(Vec2D(x, y));
@@ -1759,7 +1859,10 @@ namespace CppCLRWinFormsProject {
 		void gameScreenCollision(Charge& testQ, int screenWidth, int screenHeight) {
 
 			if (testQ.getY() >= screenHeight - testQ.getRad()) testQ.setY(screenHeight - testQ.getRad());
-			if (testQ.getX() >= screenWidth - testQ.getRad())goalReached();
+			if (testQ.getX() >= screenWidth - testQ.getRad()) {
+				WonGamePanel->Visible = true;
+				checkBox1->Checked = false;
+			};
 
 			if (testQ.getX() <= testQ.getRad()) testQ.setX(testQ.getRad());
 			if (testQ.getY() <= testQ.getRad()) testQ.setY(testQ.getRad());
@@ -2753,7 +2856,14 @@ namespace CppCLRWinFormsProject {
 		ElectricSandboxPanel->Invalidate();
 	}
 
-
+ private: System::Void RewatchB_Click(System::Object^ sender, System::EventArgs^ e) {
+			   restartLevel();
+			   WonGamePanel->Visible = false;
+		   }
+private: System::Void NextLevelB_Click(System::Object^ sender, System::EventArgs^ e) {
+	goalReached();
+	WonGamePanel->Visible = false;
+}
 	};
 }
 

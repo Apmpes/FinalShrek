@@ -134,12 +134,30 @@ public:Charge(double iq, double im, double d, Vec2D ipos, Vec2D ivel, int icharg
 		  Pen^ pen = gcnew Pen(c);
 		  g->DrawEllipse(pen, pos.getX() - diameter / 2, pos.getY() - diameter / 2, diameter, diameter);
 	  }
+	  void drawVertRect(Graphics^ g) {
+		  float width = diameter / 15;
+		  float height = diameter / 3;
+		  Brush^ brush = gcnew SolidBrush(Color::AntiqueWhite);
+		  g->FillRectangle(brush, pos.getX() - width / 2, pos.getY() - height/2 , width, height);
+	  }
+	  void drawHorRect(Graphics^ g) {
+		  float width = diameter / 3;
+		  float height = diameter / 15;
+		  Brush^ brush = gcnew SolidBrush(Color::AntiqueWhite);
+		  g->FillRectangle(brush, pos.getX() - width / 2, pos.getY() - height/2 , width, height);
+	  }
 	  void fill(Graphics^ g) {
 		  Color c;
 		  if (chargeIndex == -2) c = Color::SeaGreen;// test charge index is -2
-		  else { c = (q < 0) ? Color::DarkBlue : Color::DarkRed; } //normal charges
+		  else { c = (q < 0) ? Color::DarkBlue: Color::DarkRed; } //normal charges
 		  Brush^ brush = gcnew SolidBrush(c);
 		  g->FillEllipse(brush, pos.getX() - diameter / 2, pos.getY() - diameter / 2, diameter, diameter);
+		   if (q < 0) {// draw these after so they are on top
+			  drawHorRect(g);
+		  }
+		  else if (q > 0) {
+			  drawHorRect(g); drawVertRect(g);
+		  }
 	  }
 	  void diameterFromCharge() {
 		  double Do = 35.78; //to have the diamater = 80 at Q = 5, and scale with square root after that (so it doesnt blow up)
@@ -185,7 +203,7 @@ public: walls(int wallWidth, int wallHeight, int iwallN) : width(wallWidth), hei
 		  for (int ix = 0; ix < wallN; ++ix) {
 			  wx.push_back(spacing * ix + 1.2 * spacing);
 			  wy.push_back(vector<double>());//need to create the x vector first, otherwise crash
-			  for (int iy = 0; iy < (screenHeight / height); ++iy) {
+			  for (int iy = 0; iy < (screenHeight / height+1); ++iy) { //the +1 so that in the very button in odd screen sizes you still have a wall
 				  if (iy < (hole[ix] - holeSize) || iy >= hole[ix]) { //if not in hole, create the wall with those coords
 					  wy[ix].push_back(height * iy);
 				  }
