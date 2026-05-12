@@ -31,6 +31,9 @@ namespace CppCLRWinFormsProject {
 			//TODO: Add the constructor code here
 			//
 			//panel
+			this->AutoScroll = true;
+			ElectricSandboxPanel->AutoScroll = true;
+			wallGamePanel1->AutoScroll = true;
 			this->TopMost = false;
 			wallGamePanel1->Visible = false;
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized; //opens full screen
@@ -2867,6 +2870,8 @@ private: System::Windows::Forms::Button^ RewatchB;
 private: System::Void NextLevelB_Click(System::Object^ sender, System::EventArgs^ e) {
 	goalReached();
 	WonGamePanel->Visible = false;
+	Q->clear();
+	mag->clear();
 }
 	};
 }
