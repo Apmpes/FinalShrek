@@ -159,7 +159,13 @@ namespace CppCLRWinFormsProject {
             this->blDescriptionAPM->Margin = System::Windows::Forms::Padding(10, 8, 10, 10);
             this->blDescriptionAPM->Name = L"blDescriptionAPM";
             this->blDescriptionAPM->TabIndex = 7;
-            this->blDescriptionAPM->Text = L"Enter your description\nof the electromagnetism simulator here.";
+            this->blDescriptionAPM->Text = L"This section contains two simulations : Electromag Run Game and Electric Sandbox.\n"
+               L"The Electromag Run Game consists of creating an electric field by placing charges\n"
+               L" and inducing changing magnetic fields to guide your test charge to the end goal, avoiding collisions.\n"
+                L"There are many tools to help you achieve your goal, like visualizing the Vector Field.\n"
+                L"In the Electric Sandbox you can explore the properties of the electric field and gain intuitive \n"
+                L"understanding through various means.You can perform calculations to investigate the field, draw vector arrows, simulate charges,\n"
+                L"visualize the flow of the field through colorful lines, and more!";
             this->blDescriptionAPM->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 
             this->blDescriptionUH->BackColor = System::Drawing::Color::FromArgb(18, 25, 8);
