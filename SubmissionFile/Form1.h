@@ -182,9 +182,9 @@ namespace CppCLRWinFormsProject {
             this->HelpPagePanel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
                 System::Windows::Forms::AnchorStyles::Top |
                 System::Windows::Forms::AnchorStyles::Right);
-            this->HelpPagePanel->Location = System::Drawing::Point(690, 0);
-            this->HelpPagePanel->Size = System::Drawing::Size(312, 572);
-            this->HelpPagePanel->Width = 312;
+            this->HelpPagePanel->Location = System::Drawing::Point(600, 0);
+            this->HelpPagePanel->Size = System::Drawing::Size(312, 650);
+            this->HelpPagePanel->Width = 382;
             this->HelpPagePanel->Name = L"HelpPagePanel";
             this->HelpPagePanel->TabIndex = 3;
             this->HelpPagePanel->Visible = false;
@@ -197,7 +197,7 @@ namespace CppCLRWinFormsProject {
             this->ExitHelpPage->FlatAppearance->BorderSize = 0;
             this->ExitHelpPage->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Bold));
             this->ExitHelpPage->ForeColor = System::Drawing::Color::White;
-            this->ExitHelpPage->Location = System::Drawing::Point(268, 12);
+            this->ExitHelpPage->Location = System::Drawing::Point(348, 12);
             this->ExitHelpPage->Name = L"ExitHelpPage";
             this->ExitHelpPage->Size = System::Drawing::Size(33, 23);
             this->ExitHelpPage->TabIndex = 5;
@@ -228,16 +228,18 @@ namespace CppCLRWinFormsProject {
             this->FreqQuestText->Name = L"FreqQuestText";
             this->FreqQuestText->TabIndex = 2;
             this->FreqQuestText->Text =
-                L"What programming language was this app made in?\n"
+                L"Q: What programming language was\n this app made in?\n"
                 L"Ans: C++ with CLR/CLI\n\n"
                 L"For the electromagnetism simulator:\n"
-                L"what equations is it based on?\n"
-                L"Ans: Maxwell's equations and Coulomb's Laws\n\n";
+                L"Q: What equations is it based on?\n"
+                L"Ans: Maxwell's equations and Coulomb's Laws\n\n"
+                L"Q: Does the RC circuit work for discharging?\n"
+                L"Ans: Yes, it does. If the intial voltage is greater \nthan the supply it will show a discharging graph.\n\n";
 
             this->ContactTitle->AutoSize = true;
             this->ContactTitle->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.8F, System::Drawing::FontStyle::Bold));
             this->ContactTitle->ForeColor = System::Drawing::Color::FromArgb(186, 117, 23);
-            this->ContactTitle->Location = System::Drawing::Point(20, 289);
+            this->ContactTitle->Location = System::Drawing::Point(20, 320);
             this->ContactTitle->Name = L"ContactTitle";
             this->ContactTitle->TabIndex = 3;
             this->ContactTitle->Text = L"Contact";
@@ -245,7 +247,7 @@ namespace CppCLRWinFormsProject {
             this->ContactTxt->AutoSize = true;
             this->ContactTxt->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F));
             this->ContactTxt->ForeColor = System::Drawing::Color::FromArgb(200, 180, 150);
-            this->ContactTxt->Location = System::Drawing::Point(20, 330);
+            this->ContactTxt->Location = System::Drawing::Point(20, 360);
             this->ContactTxt->Name = L"ContactTxt";
             this->ContactTxt->TabIndex = 4;
             this->ContactTxt->Text =
@@ -254,8 +256,7 @@ namespace CppCLRWinFormsProject {
                 L"Add your contact details here.\n\n"
                 L"Alex Naylor: Graphing Simulator\nA.Naylor-Beggs1-25@student.lboro.ac.uk\n\n"
                 L"Andres Perez: Electromagnetism Simulator\nA.Perez-Maillard1-24@student.lboro.ac.uk\n\n"
-                L"Uzair Hafesji: Magnetism Simulator\nU.Hafesji1-25@student.lboro.ac.uk";
-
+                L"Uzair Hafesji: Magnetism Simulator\nU.Hafesji1-25@student.lboro.ac.uk\n\n";
             this->EnterHelpPage->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(
                 System::Windows::Forms::AnchorStyles::Top |
                 System::Windows::Forms::AnchorStyles::Right);

@@ -443,6 +443,7 @@ namespace CppCLRWinFormsProject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 
 			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
